@@ -13,15 +13,15 @@ The prototype currently reads local app metadata. This document defines a small,
 
 ## Future package metadata
 
-Before enabling downloads, extend an app entry with:
+Before enabling a package download, an app entry must include:
 - an HTTPS package URL;
-- a SHA-256 digest;
-- a signature and signer/key identifier;
+- a 64-character SHA-256 digest;
+- a signature and signer/key identifier for the later installation-trust check;
 - minimum and maximum platform requirements;
 - an explicit supported-device list;
 - release notes and a rollback-safe update policy.
 
-The client must verify authenticity and integrity before presenting a package as installable. A catalogue response alone must never trigger installation.
+The watch client uses `system.request` to download the RPK into the app cache and `system.crypto` to compare its SHA-256 digest. A checksum mismatch is rejected. A checksum confirms file integrity against catalogue metadata; it does not prove who published the package. Signature verification and a trusted publisher key are still required before any installation flow is enabled. Downloaded files currently remain in the VelaStore app cache; this is not an installer and does not guarantee permanent storage.
 
 ## Example
 
