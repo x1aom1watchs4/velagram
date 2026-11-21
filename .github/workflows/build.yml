@@ -23,10 +23,10 @@ jobs:
       - name: Build VelaStore RPK
         working-directory: watch
         run: npm run build
-      - name: Verify and stage VelaStore RPK
+      - name: Find and stage VelaStore RPK
         run: |
           set -euo pipefail
-          RPK="$(find watch/dist -type f -name '*.debug.rpk' -print -quit)"
+          RPK="$(find . -type f -name '*.debug.*.rpk' -not -path '*/node_modules/*' -print -quit)"
           test -n "$RPK"
           mkdir -p watch/artifacts
           cp "$RPK" watch/artifacts/
@@ -55,10 +55,10 @@ jobs:
       - name: Build game RPK
         working-directory: games/${{ matrix.game }}
         run: npm run build
-      - name: Verify RPK
+      - name: Find and stage game RPK
         run: |
           set -euo pipefail
-          RPK="$(find "games/${{ matrix.game }}/dist" -type f -name '*.debug.rpk' -print -quit)"
+          RPK="$(find . -type f -name '*.debug.*.rpk' -not -path '*/node_modules/*' -print -quit)"
           test -n "$RPK"
           mkdir -p games/artifacts
           cp "$RPK" "games/artifacts/${{ matrix.game }}.debug.rpk"
