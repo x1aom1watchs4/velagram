@@ -1,11 +1,9 @@
 <template>
   <div class="page">
     <div class="header"><text class="back" onclick="goHome">‹</text><div class="heading-copy"><text class="eyebrow">DISCOVER</text><text class="heading">Categories</text></div></div>
-    <text class="intro">Find something useful for every moment.</text>
-    <div class="item utilities" onclick="openCategory('Utilities')"><div class="symbol-wrap"><text class="symbol">◷</text></div><div class="copy"><text class="name">Utilities</text><text class="desc">Weather, timers and tools</text></div><text class="arrow">↗</text></div>
-    <div class="item music" onclick="openCategory('Music')"><div class="symbol-wrap"><text class="symbol">♫</text></div><div class="copy"><text class="name">Music</text><text class="desc">Audio and media controls</text></div><text class="arrow">↗</text></div>
-    <div class="item productivity" onclick="openCategory('Productivity')"><div class="symbol-wrap"><text class="symbol">✎</text></div><div class="copy"><text class="name">Productivity</text><text class="desc">Notes and focus tools</text></div><text class="arrow">↗</text></div>
-    <div class="footer"><text class="foot">3 COLLECTIONS · 4 SAMPLE APPS</text><div class="action" onclick="goHome"><text>Home</text></div></div>
+    <text class="intro">Four small games made for touch controls on your watch.</text>
+    <div class="item games" onclick="openCategory('Games')"><div class="symbol-wrap"><text class="symbol">◇</text></div><div class="copy"><text class="name">Mini Games</text><text class="desc">Tap, memory, 2048 and Snake</text></div><text class="arrow">↗</text></div>
+    <div class="footer"><text class="foot">1 COLLECTION · 4 TEST GAMES</text><div class="action" onclick="goHome"><text>Home</text></div></div>
   </div>
 </template>
 <script>
@@ -23,9 +21,7 @@ export default {
 .eyebrow{color:#b9a6e8;font-size:8px;font-size:22px;font-weight:bold;margin-top:1px}
 .intro{color:#c2c2cd;font-size:11px;margin-top:9px;margin-bottom:15px}
 .item{width:100%;height:76px;margin-bottom:9px;padding:10px 12px;box-sizing:border-box;border-radius:26px;flex-direction:row;align-items:center}
-.utilities{background-color:#d8c8ff}
-.music{background-color:#b6dfd1}
-.productivity{background-color:#ffd3ad}
+.games{background-color:#d8c8ff}
 .symbol-wrap{width:48px;height:48px;border-radius:19px;background-color:#c6b7e8;justify-content:center;align-items:center}
 .symbol{color:#30234a;font-size:25px}
 .copy{flex:1;margin-left:11px;flex-direction:column}
