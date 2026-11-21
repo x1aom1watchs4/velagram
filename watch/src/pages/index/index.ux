@@ -2,24 +2,23 @@
   <div class="page">
     <div class="topbar">
       <div class="brand-mark"><text class="brand-letter">V</text></div>
-      <div class="brand-copy"><text class="brand-title">VelaStore</text><text class="brand-subtitle">APPS FOR YOUR WATCH</text></div>
+      <div class="brand-copy"><text class="brand-title">VelaStore</text><text class="brand-subtitle">GAMES FOR YOUR WATCH</text></div>
       <div class="search-button" onclick="openSearch"><text class="search-symbol">⌕</text></div>
     </div>
     <div class="hero">
-      <text class="hero-kicker">MADE FOR YOUR WRIST</text>
-      <text class="hero-title">A little more<br/>from your watch.</text>
-      <div class="hero-bottom"><text class="hero-copy">Explore the collection</text><div class="hero-go" onclick="openCategories"><text>↗</text></div></div>
-      
+      <text class="hero-kicker">FOUR MINI GAMES</text>
+      <text class="hero-title">A little fun<br/>on your wrist.</text>
+      <div class="hero-bottom"><text class="hero-copy">Touch-first watch games</text><div class="hero-go" onclick="openCategories"><text>↗</text></div></div>
     </div>
-    <div class="section-heading"><text class="section-title">Picked for you</text><text class="section-link" onclick="openCategories">SEE ALL  ›</text></div>
-    <div class="app-card" onclick="openMusic">
-      <div class="app-icon icon-music"><div class="disc"><div class="disc-hole"></div></div><div class="sun"></div><div class="cloud"></div><div class="timer-ring"><div class="timer-hand"></div><div class="timer-dot"></div></div><div class="paper"><div class="paper-line"></div><div class="paper-line"></div><div class="paper-line"></div></div></div>
-      <div class="app-copy"><text class="app-name">Mini Music</text><text class="app-description">Your music, one tap away</text><text class="app-meta">MUSIC  ·  DEMO</text></div>
+    <div class="section-heading"><text class="section-title">Try these games</text><text class="section-link" onclick="openCategories">SEE ALL  ›</text></div>
+    <div class="app-card" onclick="openTapRush">
+      <div class="app-icon icon-timer"><div class="disc"><div class="disc-hole"></div></div><div class="sun"></div><div class="cloud"></div><div class="timer-ring"><div class="timer-hand"></div><div class="timer-dot"></div></div><div class="paper"><div class="paper-line"></div><div class="paper-line"></div><div class="paper-line"></div></div></div>
+      <div class="app-copy"><text class="app-name">Tap Rush</text><text class="app-description">Tap the target 30 times</text><text class="app-meta">GAME  ·  TEST APP</text></div>
       <div class="app-open"><text>→</text></div>
     </div>
-    <div class="app-card" onclick="openWeather">
-      <div class="app-icon icon-weather"><div class="disc"><div class="disc-hole"></div></div><div class="sun"></div><div class="cloud"></div><div class="timer-ring"><div class="timer-hand"></div><div class="timer-dot"></div></div><div class="paper"><div class="paper-line"></div><div class="paper-line"></div><div class="paper-line"></div></div></div>
-      <div class="app-copy"><text class="app-name">Weather Lite</text><text class="app-description">A quick look at the sky</text><text class="app-meta">UTILITIES  ·  DEMO</text></div>
+    <div class="app-card" onclick="openMemory">
+      <div class="app-icon icon-music"><div class="disc"><div class="disc-hole"></div></div><div class="sun"></div><div class="cloud"></div><div class="timer-ring"><div class="timer-hand"></div><div class="timer-dot"></div></div><div class="paper"><div class="paper-line"></div><div class="paper-line"></div><div class="paper-line"></div></div></div>
+      <div class="app-copy"><text class="app-name">Memory Match</text><text class="app-description">Find matching pairs</text><text class="app-meta">GAME  ·  TEST APP</text></div>
       <div class="app-open"><text>→</text></div>
     </div>
     <div class="bottom-nav">
@@ -27,7 +26,7 @@
       <div class="nav-item" onclick="openLibrary"><text class="nav-icon">◫</text><text class="nav-label">Library</text></div>
       <div class="nav-item" onclick="openSettings"><text class="nav-icon">⚙</text><text class="nav-label">Settings</text></div>
     </div>
-    <text class="bottom-note">CATALOGUE PREVIEW · INSTALLATION NOT AVAILABLE</text>
+    <text class="bottom-note">SEPARATE GAME RPK BUILDS · TEST VERSION</text>
   </div>
 </template>
 <script>
@@ -37,8 +36,8 @@ export default {
   openCategories() { router.push({ uri: '/pages/categories' }) },
   openLibrary() { router.push({ uri: '/pages/library' }) },
   openSettings() { router.push({ uri: '/pages/settings' }) },
-  openMusic() { router.push({ uri: '/pages/details-music' }) },
-  openWeather() { router.push({ uri: '/pages/details-weather' }) }
+  openTapRush() { router.push({ uri: '/pages/details', params: { appId: 'tap-rush' } }) },
+  openMemory() { router.push({ uri: '/pages/details', params: { appId: 'memory-match' } }) }
 }
 </script>
 <style>
@@ -58,17 +57,12 @@ export default {
 .hero-copy { color:#4c3a70; font-size:10px; }
 .hero-go { width:29px; height:29px; border-radius:15px; background-color:#38245f; justify-content:center; align-items:center; }
 .hero-go text { color:#fff; font-size:18px; }
-
 .section-heading { width:100%; height:25px; margin-top:8px; flex-direction:row; justify-content:space-between; align-items:center; }
 .section-title { color:#f0edf7; font-size:15px; font-weight:bold; }
 .section-link { color:#cbb8ff; font-size:8px; }
 .app-card { width:100%; height:59px; margin-top:6px; padding:7px 9px; box-sizing:border-box; border-radius:22px; background-color:#20232b; flex-direction:row; align-items:center; }
-
 .app-icon{width:42px;height:42px;border-radius:17px;justify-content:center;align-items:center;flex-direction:row}
-.icon-music{background-color:#a9d4c6}
-.icon-weather{background-color:#ffcf9f}
-.icon-timer{background-color:#a9d8d2}
-.icon-notes{background-color:#e9bca8}
+.icon-music{background-color:#a9d4c6}.icon-weather{background-color:#ffcf9f}.icon-timer{background-color:#d8c8ff}.icon-notes{background-color:#b9dca5}
 .disc{width:25px;height:25px;border-radius:13px;background-color:#283c38;justify-content:center;align-items:center}
 .disc-hole{width:7px;height:7px;border-radius:4px;background-color:#bce6d8}
 .sun{width:17px;height:17px;border-radius:9px;background-color:#a85f35;margin-right:2px}
@@ -78,7 +72,6 @@ export default {
 .timer-dot{width:4px;height:4px;border-radius:2px;background-color:#245e5a;margin-left:-4px;margin-top:4px}
 .paper{width:19px;height:25px;border-radius:4px;background-color:#fff0e8;padding:5px 3px;box-sizing:border-box;flex-direction:column;justify-content:space-between}
 .paper-line{width:12px;height:2px;border-radius:1px;background-color:#9a5b49}
-
 .app-copy { flex:1; margin-left:9px; flex-direction:column; }
 .app-name { color:#f2eff8; font-size:13px; font-weight:bold; }
 .app-description { color:#c2c2cd; font-size:9px; margin-top:2px; }
@@ -93,7 +86,6 @@ export default {
 .nav-label { color:#e3deec; font-size:9px; }
 .nav-active .nav-label { color:#2b1b4d; font-weight:bold; }
 .bottom-note { color:#777987; font-size:6px; text-align:center; margin-top:4px; }
-
 .disc,.sun,.cloud,.timer-ring,.paper{display:none}
 .icon-music .disc{display:flex}
 .icon-weather .sun{display:flex}
