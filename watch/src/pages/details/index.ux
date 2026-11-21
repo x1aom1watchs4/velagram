@@ -17,6 +17,7 @@ import router from '@system.router'
 import apps from '../../common/apps'
 import request from '@system.request'
 import crypto from '@system.crypto'
+import storage from '@system.storage'
 export default {
   private: { app: apps[0], downloadStatus: 'No verified package has been published yet.', downloadLabel: 'Package unavailable', downloading: false },
   onInit() {
@@ -62,8 +63,19 @@ export default {
                 this.downloadStatus = 'Checksum mismatch. This package was rejected.'
                 this.downloadLabel = 'Try again'
               } else {
-                this.downloadStatus = 'Downloaded and SHA-256 checked. File is in the app cache.'
+                this.downloadStatus = 'Downloaded and SHA-256 checked. Saved to My library.'
                 this.downloadLabel = 'Downloaded'
+                storage.get({ key: 'velastore_downloads', success: (res) => {
+                  var saved = res && res.data ? res.data : []
+                  if (typeof saved === 'string') { try { saved = JSON.parse(saved) } catch (e) { saved = [] } }
+                  if (!Array.isArray(saved)) saved = []
+                  var entry = { id: this.app.id, name: this.app.name, version: this.app.version, uri: result.uri }
+                  saved = saved.filter(function (item) { return item.id !== entry.id })
+                  saved.push(entry)
+                  storage.set({ key: 'velastore_downloads', value: JSON.stringify(saved) })
+                }, fail: () => {
+                  storage.set({ key: 'velastore_downloads', value: JSON.stringify([{ id: this.app.id, name: this.app.name, version: this.app.version, uri: result.uri }]) })
+                } })
               }
             } catch (error) {
               this.downloadStatus = 'Could not verify the downloaded file. It was not accepted.'
