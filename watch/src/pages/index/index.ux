@@ -48,11 +48,11 @@ export default {
 .brand-letter { color:#27164b; font-size:24px; font-weight:bold; }
 .brand-copy { flex:1; margin-left:10px; flex-direction:column; }
 .brand-title { color:#f0edf7; font-size:20px; font-weight:bold; }
-.brand-subtitle { color:#bcb4cf; font-size:8px; letter-spacing:1.5px; margin-top:2px; }
+.brand-subtitle { color:#bcb4cf; font-size:8px; margin-top:2px; }
 .search-button { width:38px; height:38px; border-radius:19px; background-color:#252832; justify-content:center; align-items:center; }
 .search-symbol { color:#e4d9ff; font-size:25px; }
 .hero { width:100%; height:145px; margin-top:10px; padding:14px 16px; box-sizing:border-box; border-radius:30px; background-color:#d8c8ff; flex-direction:column; }
-.hero-kicker { color:#59477e; font-size:8px; letter-spacing:1.3px; font-weight:bold; }
+.hero-kicker { color:#59477e; font-size:8px; font-weight:bold; }
 .hero-title { color:#251744; font-size:25px; line-height:27px; font-weight:bold; margin-top:5px; }
 .hero-bottom { width:100%; flex-direction:row; align-items:center; justify-content:space-between; margin-top:5px; }
 .hero-copy { color:#4c3a70; font-size:10px; }
@@ -61,7 +61,7 @@ export default {
 
 .section-heading { width:100%; height:25px; margin-top:8px; flex-direction:row; justify-content:space-between; align-items:center; }
 .section-title { color:#f0edf7; font-size:15px; font-weight:bold; }
-.section-link { color:#cbb8ff; font-size:8px; letter-spacing:1px; }
+.section-link { color:#cbb8ff; font-size:8px; }
 .app-card { width:100%; height:59px; margin-top:6px; padding:7px 9px; box-sizing:border-box; border-radius:22px; background-color:#20232b; flex-direction:row; align-items:center; }
 .app-icon { width:42px; height:42px; border-radius:17px; justify-content:center; align-items:center; }
 .music-icon { background-color:#a9d4c6; }
@@ -70,7 +70,7 @@ export default {
 .app-copy { flex:1; margin-left:9px; flex-direction:column; }
 .app-name { color:#f2eff8; font-size:13px; font-weight:bold; }
 .app-description { color:#c2c2cd; font-size:9px; margin-top:2px; }
-.app-meta { color:#b9a6e8; font-size:7px; letter-spacing:0.7px; margin-top:2px; }
+.app-meta { color:#b9a6e8; font-size:7px; margin-top:2px; }
 .app-open { width:27px; height:27px; border-radius:14px; background-color:#34313e; justify-content:center; align-items:center; }
 .app-open text { color:#e1d3ff; font-size:16px; }
 .bottom-nav { width:100%; height:48px; margin-top:8px; flex-direction:row; justify-content:space-between; align-items:center; }
@@ -80,5 +80,5 @@ export default {
 .nav-active .nav-icon { color:#2b1b4d; }
 .nav-label { color:#e3deec; font-size:9px; }
 .nav-active .nav-label { color:#2b1b4d; font-weight:bold; }
-.bottom-note { color:#777987; font-size:6px; letter-spacing:0.6px; text-align:center; margin-top:4px; }
+.bottom-note { color:#777987; font-size:6px; text-align:center; margin-top:4px; }
 </style>
