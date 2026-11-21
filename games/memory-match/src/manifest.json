@@ -23,5 +23,6 @@
         "component": "index"
       }
     }
-  }
+  },
+  "icon": "/common/icon.svg"
 }
