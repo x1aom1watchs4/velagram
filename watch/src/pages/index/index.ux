@@ -10,26 +10,26 @@
     </div>
 
     <div class="hero">
-      <text class="eyebrow">МАГАЗИН ПРИЛОЖЕНИЙ</text>
-      <text class="hero-title">Открой больше</text>
-      <text class="hero-description">Подборка приложений для твоих часов</text>
+      <text class="eyebrow">APP MARKETPLACE</text>
+      <text class="hero-title">Discover more</text>
+      <text class="hero-description">Apps picked for your watch</text>
       <div class="hero-bottom">
-        <text class="hero-tag">КАТАЛОГ • 0.1.0</text>
+        <text class="hero-tag">CATALOG • 0.1.0</text>
         <text class="hero-arrow">→</text>
       </div>
     </div>
 
     <div class="section-heading">
-      <text class="section-title">Популярное</text>
-      <text class="section-link">Смотреть всё</text>
+      <text class="section-title">Popular</text>
+      <text class="section-link">View all</text>
     </div>
 
     <div class="app-card">
       <div class="app-icon music-icon"><text class="app-icon-symbol">♫</text></div>
       <div class="app-copy">
         <text class="app-name">Mini Music</text>
-        <text class="app-description">Управление музыкой</text>
-        <text class="app-meta">МУЛЬТИМЕДИА  •  DEMO</text>
+        <text class="app-description">Music controls</text>
+        <text class="app-meta">MEDIA  •  DEMO</text>
       </div>
       <text class="app-open">›</text>
     </div>
@@ -38,23 +38,23 @@
       <div class="app-icon weather-icon"><text class="app-icon-symbol">☼</text></div>
       <div class="app-copy">
         <text class="app-name">Weather Lite</text>
-        <text class="app-description">Погода и прогноз</text>
-        <text class="app-meta">УТИЛИТЫ  •  DEMO</text>
+        <text class="app-description">Weather and forecast</text>
+        <text class="app-meta">UTILITIES  •  DEMO</text>
       </div>
       <text class="app-open">›</text>
     </div>
 
     <div class="section-heading category-heading">
-      <text class="section-title">Категории</text>
+      <text class="section-title">Categories</text>
     </div>
     <div class="category-row">
-      <div class="category-pill"><text class="category-symbol">◷</text><text class="category-name">Утилиты</text></div>
-      <div class="category-pill"><text class="category-symbol">♫</text><text class="category-name">Музыка</text></div>
-      <div class="category-pill"><text class="category-symbol">◎</text><text class="category-name">Здоровье</text></div>
+      <div class="category-pill"><text class="category-symbol">◷</text><text class="category-name">Utilities</text></div>
+      <div class="category-pill"><text class="category-symbol">♫</text><text class="category-name">Music</text></div>
+      <div class="category-pill"><text class="category-symbol">◎</text><text class="category-name">Health</text></div>
     </div>
 
     <div class="bottom-note">
-      <text class="note-text">Демонстрационный каталог · установка пока недоступна</text>
+      <text class="note-text">Demo catalog · installation not available yet</text>
     </div>
   </div>
 </template>
