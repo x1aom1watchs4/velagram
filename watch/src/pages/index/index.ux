@@ -13,12 +13,12 @@
     </div>
     <div class="section-heading"><text class="section-title">Picked for you</text><text class="section-link" onclick="openCategories">SEE ALL  ›</text></div>
     <div class="app-card" onclick="openMusic">
-      <div class="app-icon music-icon"><text class="app-icon-symbol">♫</text></div>
+      <div class="app-icon icon-music"><div class="disc"><div class="disc-hole"></div></div><div class="sun"></div><div class="cloud"></div><div class="timer-ring"><div class="timer-hand"></div><div class="timer-dot"></div></div><div class="paper"><div class="paper-line"></div><div class="paper-line"></div><div class="paper-line"></div></div></div>
       <div class="app-copy"><text class="app-name">Mini Music</text><text class="app-description">Your music, one tap away</text><text class="app-meta">MUSIC  ·  DEMO</text></div>
       <div class="app-open"><text>→</text></div>
     </div>
     <div class="app-card" onclick="openWeather">
-      <div class="app-icon weather-icon"><text class="app-icon-symbol">☼</text></div>
+      <div class="app-icon icon-weather"><div class="disc"><div class="disc-hole"></div></div><div class="sun"></div><div class="cloud"></div><div class="timer-ring"><div class="timer-hand"></div><div class="timer-dot"></div></div><div class="paper"><div class="paper-line"></div><div class="paper-line"></div><div class="paper-line"></div></div></div>
       <div class="app-copy"><text class="app-name">Weather Lite</text><text class="app-description">A quick look at the sky</text><text class="app-meta">UTILITIES  ·  DEMO</text></div>
       <div class="app-open"><text>→</text></div>
     </div>
@@ -63,10 +63,22 @@ export default {
 .section-title { color:#f0edf7; font-size:15px; font-weight:bold; }
 .section-link { color:#cbb8ff; font-size:8px; }
 .app-card { width:100%; height:59px; margin-top:6px; padding:7px 9px; box-sizing:border-box; border-radius:22px; background-color:#20232b; flex-direction:row; align-items:center; }
-.app-icon { width:42px; height:42px; border-radius:17px; justify-content:center; align-items:center; }
-.music-icon { background-color:#a9d4c6; }
-.weather-icon { background-color:#ffcf9f; }
-.app-icon-symbol { color:#1e2927; font-size:24px; }
+
+.app-icon{width:42px;height:42px;border-radius:17px;justify-content:center;align-items:center;flex-direction:row}
+.icon-music{background-color:#a9d4c6}
+.icon-weather{background-color:#ffcf9f}
+.icon-timer{background-color:#a9d8d2}
+.icon-notes{background-color:#e9bca8}
+.disc{width:25px;height:25px;border-radius:13px;background-color:#283c38;justify-content:center;align-items:center}
+.disc-hole{width:7px;height:7px;border-radius:4px;background-color:#bce6d8}
+.sun{width:17px;height:17px;border-radius:9px;background-color:#a85f35;margin-right:2px}
+.cloud{width:18px;height:11px;border-radius:7px;background-color:#fff1dd;margin-top:9px;margin-left:-7px}
+.timer-ring{width:23px;height:23px;border-radius:12px;border-width:3px;border-color:#245e5a;justify-content:center;align-items:center}
+.timer-hand{width:3px;height:9px;border-radius:2px;background-color:#245e5a;margin-top:-7px}
+.timer-dot{width:4px;height:4px;border-radius:2px;background-color:#245e5a;margin-left:-4px;margin-top:4px}
+.paper{width:19px;height:25px;border-radius:4px;background-color:#fff0e8;padding:5px 3px;box-sizing:border-box;flex-direction:column;justify-content:space-between}
+.paper-line{width:12px;height:2px;border-radius:1px;background-color:#9a5b49}
+
 .app-copy { flex:1; margin-left:9px; flex-direction:column; }
 .app-name { color:#f2eff8; font-size:13px; font-weight:bold; }
 .app-description { color:#c2c2cd; font-size:9px; margin-top:2px; }
