@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div class="topbar"><div class="brand-mark"><text class="brand-letter">V</text></div><div class="brand-copy"><text class="brand-title">VelaStore</text><text class="brand-subtitle">APP MARKETPLACE</text></div><text class="version">1.0</text></div>
+    <div class="topbar"><div class="brand-mark"><text class="brand-letter">V</text></div><div class="brand-copy"><text class="brand-title">VelaStore</text><text class="brand-subtitle">APP MARKETPLACE</text></div><text class="version" onclick="openSearch">⌕</text></div>
     <div class="hero"><text class="eyebrow">YOUR WATCH, YOUR APPS</text><text class="hero-title">Discover more</text><text class="hero-description">Explore apps made for your wrist.</text><div class="hero-bottom"><text class="hero-tag">CURATED CATALOGUE</text><text class="hero-arrow">→</text></div></div>
     <div class="section-heading"><text class="section-title">Popular apps</text><text class="section-link" onclick="openCategories">Categories ›</text></div>
     <div class="app-card" onclick="openMusic"><div class="app-icon music-icon"><text class="app-icon-symbol">♫</text></div><div class="app-copy"><text class="app-name">Mini Music</text><text class="app-description">Music controls</text><text class="app-meta">MUSIC · DEMO LISTING</text></div><text class="app-open">›</text></div>
@@ -17,6 +17,7 @@
 <script>
 import router from '@system.router'
 export default {
+  openSearch() { router.push({ uri: '/pages/search' }) },
   openCategories() { router.push({ uri: '/pages/categories' }) },
   openLibrary() { router.push({ uri: '/pages/library' }) },
   openSettings() { router.push({ uri: '/pages/settings' }) },
@@ -32,7 +33,7 @@ export default {
 .brand-copy { flex:1; margin-left:10px; flex-direction:column; }
 .brand-title { color:#f4f8fb; font-size:22px; font-weight:bold; }
 .brand-subtitle { color:#75a9c4; font-size:9px; letter-spacing:2px; margin-top:1px; }
-.version { color:#80a2b5; font-size:11px; }
+.version { color:#80cde9; font-size:25px; width:32px; text-align:center; }
 .hero { width:100%; height:118px; margin-top:10px; padding:13px 16px; box-sizing:border-box; border-radius:17px; background-color:#173c51; flex-direction:column; }
 .eyebrow { color:#83d7e9; font-size:9px; letter-spacing:1px; }
 .hero-title { color:#ffffff; font-size:24px; font-weight:bold; margin-top:5px; }
