@@ -1,6 +1,40 @@
-<template><div class="page"><div class="header"><text class="back" onclick="goHome">‹</text><text class="heading">Categories</text></div><text class="intro">Browse the VelaStore catalogue</text><div class="item" onclick="openCategory('Utilities')"><text class="symbol">◷</text><div class="copy"><text class="name">Utilities</text><text class="desc">Weather, timers and tools</text></div><text class="count">2 APPS</text></div><div class="item" onclick="openCategory('Music')"><text class="symbol">♫</text><div class="copy"><text class="name">Music</text><text class="desc">Audio and media controls</text></div><text class="count">1 APP</text></div><div class="item" onclick="openCategory('Productivity')"><text class="symbol">✎</text><div class="copy"><text class="name">Productivity</text><text class="desc">Notes and focus tools</text></div><text class="count">1 APP</text></div><text class="foot">Sample catalogue categories</text><div class="action" onclick="goHome"><text>Back to home</text></div></div></template>
-<script>import router from '@system.router'
-export default { goHome() { router.replace({ uri: '/pages/index' }) }, openCategory(category) { router.push({ uri: '/pages/search', params: { category: category } }) } }</script>
+<template>
+  <div class="page">
+    <div class="header"><text class="back" onclick="goHome">‹</text><div class="heading-copy"><text class="eyebrow">DISCOVER</text><text class="heading">Categories</text></div></div>
+    <text class="intro">Find something useful for every moment.</text>
+    <div class="item utilities" onclick="openCategory('Utilities')"><div class="symbol-wrap"><text class="symbol">◷</text></div><div class="copy"><text class="name">Utilities</text><text class="desc">Weather, timers and tools</text></div><text class="arrow">↗</text></div>
+    <div class="item music" onclick="openCategory('Music')"><div class="symbol-wrap"><text class="symbol">♫</text></div><div class="copy"><text class="name">Music</text><text class="desc">Audio and media controls</text></div><text class="arrow">↗</text></div>
+    <div class="item productivity" onclick="openCategory('Productivity')"><div class="symbol-wrap"><text class="symbol">✎</text></div><div class="copy"><text class="name">Productivity</text><text class="desc">Notes and focus tools</text></div><text class="arrow">↗</text></div>
+    <div class="footer"><text class="foot">3 COLLECTIONS · 4 SAMPLE APPS</text><div class="action" onclick="goHome"><text>Home</text></div></div>
+  </div>
+</template>
+<script>
+import router from '@system.router'
+export default {
+  goHome() { router.replace({ uri: '/pages/index' }) },
+  openCategory(category) { router.push({ uri: '/pages/search', params: { category: category } }) }
+}
+</script>
 <style>
-.page{width:466px;height:466px;padding:24px;box-sizing:border-box;flex-direction:column;background-color:#141218}.header{height:48px;flex-direction:row;align-items:center}.back{color:#d0bcff;font-size:30px;width:35px}.heading{color:#e6e0e9;font-size:22px;font-weight:bold}.intro{color:#cac4d0;font-size:13px;margin-top:8px;margin-bottom:18px}.item{width:100%;height:76px;margin-bottom:10px;padding:12px;box-sizing:border-box;border-radius:18px;background-color:#211f26;flex-direction:row;align-items:center}.symbol{color:#d0bcff;font-size:24px;width:42px;text-align:center}.copy{flex:1;flex-direction:column}.name{color:#e6e0e9;font-size:16px;font-weight:bold}.desc{color:#cac4d0;font-size:11px;margin-top:4px}.count{color:#d0bcff;font-size:9px}.foot{color:#938f99;font-size:10px;text-align:center;margin-top:12px}.action{height:43px;margin-top:16px;border-radius:18px;background-color:#4f378b;justify-content:center;align-items:center}.action text{color:#fff;font-size:13px;font-weight:bold}
+.page{width:466px;height:466px;padding:28px 39px 22px;box-sizing:border-box;flex-direction:column;background-color:#111318}
+.header{height:50px;flex-direction:row;align-items:center}
+.back{color:#d8c8ff;font-size:31px;width:34px}
+.heading-copy{flex:1;flex-direction:column}
+.eyebrow{color:#b9a6e8;font-size:8px;letter-spacing:1.5px}
+.heading{color:#f2eff8;font-size:22px;font-weight:bold;margin-top:1px}
+.intro{color:#c2c2cd;font-size:11px;margin-top:9px;margin-bottom:15px}
+.item{width:100%;height:76px;margin-bottom:9px;padding:10px 12px;box-sizing:border-box;border-radius:26px;flex-direction:row;align-items:center}
+.utilities{background-color:#d8c8ff}
+.music{background-color:#b6dfd1}
+.productivity{background-color:#ffd3ad}
+.symbol-wrap{width:48px;height:48px;border-radius:19px;background-color:rgba(30,25,45,0.10);justify-content:center;align-items:center}
+.symbol{color:#30234a;font-size:25px}
+.copy{flex:1;margin-left:11px;flex-direction:column}
+.name{color:#251b38;font-size:15px;font-weight:bold}
+.desc{color:#594f68;font-size:9px;margin-top:4px}
+.arrow{color:#35264e;font-size:20px}
+.footer{width:100%;flex-direction:column;align-items:center;margin-top:10px}
+.foot{color:#858594;font-size:7px;letter-spacing:1px}
+.action{width:100%;height:39px;margin-top:11px;border-radius:21px;background-color:#d8c8ff;justify-content:center;align-items:center}
+.action text{color:#2a1b48;font-size:11px;font-weight:bold}
 </style>
