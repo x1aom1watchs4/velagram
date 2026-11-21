@@ -4,7 +4,7 @@
   "private": true,
   "description": "VelaStore 1.0 catalogue prototype for Xiaomi Vela OS",
   "scripts": {
-    "build": "aiot build --complete-feature",
+    "build": "aiot build",
     "release": "aiot release"
   },
   "devDependencies": {
