@@ -20,13 +20,13 @@ jobs:
       - name: Install VelaStore dependencies
         working-directory: watch
         run: npm install --no-audit --no-fund
-      - name: Build VelaStore debug RPK
+      - name: Build VelaStore RPK
         working-directory: watch
         run: npm run build
       - name: Verify and stage VelaStore RPK
         run: |
           set -euo pipefail
-          RPK="$(find watch/dist -type f -name '*.debug.*.rpk' -print -quit)"
+          RPK="$(find watch/dist -type f -name '*.rpk' -print -quit)"
           test -n "$RPK"
           mkdir -p watch/artifacts
           cp "$RPK" watch/artifacts/
@@ -52,13 +52,13 @@ jobs:
       - name: Install game dependencies
         working-directory: games/${{ matrix.game }}
         run: npm install --no-audit --no-fund
-      - name: Build debug RPK
+      - name: Build game RPK
         working-directory: games/${{ matrix.game }}
         run: npm run build
       - name: Verify RPK
         run: |
           set -euo pipefail
-          RPK="$(find "games/${{ matrix.game }}/dist" -type f -name '*.debug.*.rpk' -print -quit)"
+          RPK="$(find "games/${{ matrix.game }}/dist" -type f -name '*.rpk' -print -quit)"
           test -n "$RPK"
           mkdir -p games/artifacts
           cp "$RPK" "games/artifacts/${{ matrix.game }}.debug.rpk"
