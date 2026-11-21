@@ -7,13 +7,78 @@
     <div class="meta"><text>VERSION</text><text>1.2.0</text></div>
     <div class="meta"><text>PACKAGE SIZE</text><text>560 KB</text></div>
     <div class="meta"><text>COMPATIBILITY</text><text>Not verified</text></div>
-    <div class="notice"><text class="notice-title">PREVIEW LISTING</text><text class="notice-copy">Installation is not enabled for retail Watch S4 in this build.</text></div>
-    <div class="action" onclick="goHome"><text>Back to store</text></div>
+    <div class="notice"><text class="notice-title">PACKAGE DOWNLOAD</text><text class="notice-copy">{{downloadStatus}}</text></div>
+    <div class="action" onclick="downloadApp"><text>{{downloadLabel}}</text></div>
   </div>
 </template>
 <script>
 import router from '@system.router'
-export default { goHome() { router.replace({ uri: '/pages/index' }) } }
+import apps from '../../common/apps'
+import request from '@system.request'
+import crypto from '@system.crypto'
+export default {
+  private: { app: apps[1], downloadStatus: 'No verified package has been published yet.', downloadLabel: 'Package unavailable', downloading: false },
+  goHome() { router.replace({ uri: '/pages/index' }) },
+  downloadApp() {
+    if (this.downloading) return
+    var url = this.app && this.app.packageUrl
+    var expected = this.app && this.app.sha256
+    if (!url || !expected) {
+      this.downloadStatus = 'No verified package has been published yet.'
+      return
+    }
+    if (url.indexOf('https://') !== 0 || !/^[0-9a-fA-F]{64}$/.test(expected)) {
+      this.downloadStatus = 'Package metadata is invalid. Download blocked.'
+      return
+    }
+    this.downloading = true
+    this.downloadLabel = 'Starting...'
+    this.downloadStatus = 'Connecting to the package server...'
+    request.download({
+      url: url,
+      filename: this.app.id + '-' + this.app.version + '.rpk',
+      success: (task) => {
+        if (!task || !task.token) {
+          this.downloading = false
+          this.downloadLabel = 'Try again'
+          this.downloadStatus = 'The download task could not be created.'
+          return
+        }
+        this.downloadLabel = 'Downloading...'
+        this.downloadStatus = 'Download started. Checking the file when it finishes...'
+        request.onDownloadComplete({
+          token: task.token,
+          success: (result) => {
+            try {
+              var actual = crypto.hashDigest({ uri: result.uri, algo: 'SHA256' })
+              if (String(actual).toLowerCase() !== String(expected).toLowerCase()) {
+                this.downloadStatus = 'Checksum mismatch. This package was rejected.'
+                this.downloadLabel = 'Try again'
+              } else {
+                this.downloadStatus = 'Downloaded and SHA-256 checked. File is in the app cache.'
+                this.downloadLabel = 'Downloaded'
+              }
+            } catch (error) {
+              this.downloadStatus = 'Could not verify the downloaded file. It was not accepted.'
+              this.downloadLabel = 'Try again'
+            }
+            this.downloading = false
+          },
+          fail: (error, code) => {
+            this.downloading = false
+            this.downloadLabel = 'Try again'
+            this.downloadStatus = 'Download failed (' + code + ').'
+          }
+        })
+      },
+      fail: (error, code) => {
+        this.downloading = false
+        this.downloadLabel = 'Try again'
+        this.downloadStatus = 'Could not start download (' + code + ').'
+      }
+    })
+  }
+}
 </script>
 <style>
 .page{width:466px;height:466px;padding:23px 40px 20px;box-sizing:border-box;flex-direction:column;align-items:center;background-color:#111318}
