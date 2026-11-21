@@ -93,4 +93,11 @@ export default {
 .nav-label { color:#e3deec; font-size:9px; }
 .nav-active .nav-label { color:#2b1b4d; font-weight:bold; }
 .bottom-note { color:#777987; font-size:6px; text-align:center; margin-top:4px; }
+
+.app-icon>div{display:none}
+.icon-music .disc{display:flex}
+.icon-weather .sun{display:flex}
+.icon-weather .cloud{display:flex}
+.icon-timer .timer-ring{display:flex}
+.icon-notes .paper{display:flex}
 </style>
