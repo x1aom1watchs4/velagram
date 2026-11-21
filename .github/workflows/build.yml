@@ -26,7 +26,7 @@ jobs:
       - name: Verify and stage VelaStore RPK
         run: |
           set -euo pipefail
-          RPK="$(find watch/dist -type f -name '*.rpk' -print -quit)"
+          RPK="$(find watch/dist -type f -name '*.debug.rpk' -print -quit)"
           test -n "$RPK"
           mkdir -p watch/artifacts
           cp "$RPK" watch/artifacts/
@@ -58,7 +58,7 @@ jobs:
       - name: Verify RPK
         run: |
           set -euo pipefail
-          RPK="$(find "games/${{ matrix.game }}/dist" -type f -name '*.rpk' -print -quit)"
+          RPK="$(find "games/${{ matrix.game }}/dist" -type f -name '*.debug.rpk' -print -quit)"
           test -n "$RPK"
           mkdir -p games/artifacts
           cp "$RPK" "games/artifacts/${{ matrix.game }}.debug.rpk"
