@@ -9,7 +9,7 @@
       <text class="hero-kicker">MADE FOR YOUR WRIST</text>
       <text class="hero-title">A little more<br/>from your watch.</text>
       <div class="hero-bottom"><text class="hero-copy">Explore the collection</text><div class="hero-go" onclick="openCategories"><text>↗</text></div></div>
-      <div class="hero-orb"></div>
+      
     </div>
     <div class="section-heading"><text class="section-title">Picked for you</text><text class="section-link" onclick="openCategories">SEE ALL  ›</text></div>
     <div class="app-card" onclick="openMusic">
@@ -51,14 +51,14 @@ export default {
 .brand-subtitle { color:#bcb4cf; font-size:8px; letter-spacing:1.5px; margin-top:2px; }
 .search-button { width:38px; height:38px; border-radius:19px; background-color:#252832; justify-content:center; align-items:center; }
 .search-symbol { color:#e4d9ff; font-size:25px; }
-.hero { width:100%; height:145px; margin-top:10px; padding:14px 16px; box-sizing:border-box; border-radius:30px; background-color:#d8c8ff; flex-direction:column; position:relative; }
+.hero { width:100%; height:145px; margin-top:10px; padding:14px 16px; box-sizing:border-box; border-radius:30px; background-color:#d8c8ff; flex-direction:column; }
 .hero-kicker { color:#59477e; font-size:8px; letter-spacing:1.3px; font-weight:bold; }
 .hero-title { color:#251744; font-size:25px; line-height:27px; font-weight:bold; margin-top:5px; }
 .hero-bottom { width:100%; flex-direction:row; align-items:center; justify-content:space-between; margin-top:5px; }
 .hero-copy { color:#4c3a70; font-size:10px; }
 .hero-go { width:29px; height:29px; border-radius:15px; background-color:#38245f; justify-content:center; align-items:center; }
 .hero-go text { color:#fff; font-size:18px; }
-.hero-orb { position:absolute; width:62px; height:62px; border-radius:31px; background-color:#c0a8f6; right:13px; top:18px; }
+
 .section-heading { width:100%; height:25px; margin-top:8px; flex-direction:row; justify-content:space-between; align-items:center; }
 .section-title { color:#f0edf7; font-size:15px; font-weight:bold; }
 .section-link { color:#cbb8ff; font-size:8px; letter-spacing:1px; }
