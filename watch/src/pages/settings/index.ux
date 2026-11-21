@@ -3,7 +3,7 @@
     <div class="header"><text class="back" onclick="goHome">‹</text><div class="heading-copy"><text class="eyebrow">PREFERENCES</text><text class="heading">Settings</text></div></div>
     <div class="brand"><div class="brand-mark"><text>V</text></div><div class="brand-copy"><text class="brand-name">VelaStore</text><text class="brand-version">Version 1.0.0 · Preview</text></div></div>
     <text class="section-label">ABOUT THIS BUILD</text>
-    <div class="setting"><text class="setting-title">Catalogue source</text><text class="setting-value">Built-in demo collection</text><text class="setting-mark">›</text></div>
+    <div class="setting"><text class="setting-title">Catalogue source</text><text class="setting-value">Built-in demo collection</text></div>
     <div class="setting"><text class="setting-title">Device profile</text><text class="setting-value">466 × 466 watch display</text><text class="setting-mark">›</text></div>
     <div class="setting"><text class="setting-title">Installation</text><text class="setting-value">Not available in this build</text><text class="setting-mark">›</text></div>
     <div class="setting"><text class="setting-title">Compatibility</text><text class="setting-value">Watch S4 support not verified</text><text class="setting-mark">›</text></div>
