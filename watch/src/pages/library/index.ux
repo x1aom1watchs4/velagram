@@ -2,15 +2,29 @@
   <div class="page">
     <div class="header"><text class="back" onclick="goHome">‹</text><div class="heading-copy"><text class="eyebrow">YOUR SPACE</text><text class="heading">My library</text></div></div>
     <div class="empty-icon"><text>◫</text></div>
-    <text class="empty-title">Your collection<br/>starts here.</text>
-    <text class="empty-copy">Apps you install will appear here when a supported installation method becomes available.</text>
-    <div class="status"><div class="status-dot"></div><div class="status-copy"><text class="status-label">CURRENT STATUS</text><text class="status-value">Catalogue preview</text></div></div>
+    <text class="empty-title">{{libraryTitle}}</text>
+    <text class="empty-copy">{{libraryCopy}}</text>
+    <div class="status"><div class="status-dot"></div><div class="status-copy"><text class="status-label">CURRENT STATUS</text><text class="status-value">{{libraryStatus}}</text></div></div>
     <div class="action" onclick="goHome"><text>Explore apps  ↗</text></div>
   </div>
 </template>
 <script>
 import router from '@system.router'
-export default { goHome() { router.replace({ uri: '/pages/index' }) } }
+import storage from '@system.storage'
+export default {
+  private: { libraryTitle: 'Your collection starts here.', libraryCopy: 'Downloaded packages will appear here. Downloading a package does not install it automatically.', libraryStatus: 'No downloads yet' },
+  onInit() {
+    storage.get({ key: 'velastore_downloads', success: (res) => {
+      var saved = res && res.data ? res.data : []
+      if (typeof saved === 'string') { try { saved = JSON.parse(saved) } catch (e) { saved = [] } }
+      if (!Array.isArray(saved) || saved.length === 0) return
+      this.libraryTitle = 'Your downloads'
+      this.libraryStatus = saved.length + ' package(s) saved'
+      this.libraryCopy = saved.map(function (item) { return item.name + '  ·  ' + item.version }).join('\\n') + '\\n\\nPackages are downloaded, not installed.'
+    }, fail: () => {} })
+  },
+  goHome() { router.replace({ uri: '/pages/index' }) }
+}
 </script>
 <style>
 .page{width:466px;height:466px;padding:27px 40px 22px;box-sizing:border-box;flex-direction:column;align-items:center;background-color:#111318}
