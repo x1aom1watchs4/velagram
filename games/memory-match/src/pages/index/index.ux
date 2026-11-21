@@ -20,9 +20,16 @@
 </template>
 <script>
 export default {
-  private: { values: ['●','▲','■','◆','■','●','◆','▲'], shown: ['?','?','?','?','?','?','?','?'], first: -1, pairs: 0, locked: false, message: 'Tap two tiles to match.' },
+  private: { values: ['●','▲','■','◆','■','●','◆','▲'], shown: ['?','?','?','?','?','?','?','?'], first: -1, second: -1, pairs: 0, locked: false, message: 'Tap two tiles to match.' },
   choose(index) {
-    if (this.locked || this.shown[index] !== '?') return
+    if (this.locked) {
+      this.shown.splice(this.first, 1, '?')
+      this.shown.splice(this.second, 1, '?')
+      this.locked = false
+      this.first = -1
+      this.second = -1
+    }
+    if (this.shown[index] !== '?') return
     this.shown.splice(index, 1, this.values[index])
     if (this.first < 0) { this.first = index; return }
     if (this.values[this.first] === this.values[index]) {
@@ -31,14 +38,14 @@ export default {
       this.message = this.pairs === 4 ? 'Perfect! All pairs found.' : 'A match! Find another.'
     } else {
       this.locked = true
-      this.message = 'Not a match. Tap SHUFFLE to retry.'
-      this.first = -1
+      this.second = index
+      this.message = 'No match. Tap another tile to continue.'
     }
   },
   resetGame() {
     this.values = ['◆','●','▲','■','▲','◆','■','●']
     this.shown = ['?','?','?','?','?','?','?','?']
-    this.first = -1; this.pairs = 0; this.locked = false
+    this.first = -1; this.second = -1; this.pairs = 0; this.locked = false
     this.message = 'Tap two tiles to match.'
   }
 }
