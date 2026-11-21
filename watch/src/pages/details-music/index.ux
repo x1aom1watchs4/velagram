@@ -1,6 +1,35 @@
-<template><div class="page"><div class="header"><text class="back" onclick="goHome">‹</text><text class="heading">App details</text></div><div class="app-icon"><text>♫</text></div><text class="name">Mini Music</text><text class="category">MUSIC · CATALOGUE DEMO</text><text class="description">Simple music controls for your wrist. This entry demonstrates how VelaStore presents app information.</text><div class="meta"><text>VERSION</text><text>1.0.0</text></div><div class="meta"><text>PACKAGE SIZE</text><text>420 KB</text></div><div class="meta"><text>COMPATIBILITY</text><text>Not verified</text></div><div class="notice"><text>INSTALLATION DISABLED</text><text class="notice-copy">Retail Watch S4 installation has not been confirmed. Catalogue information only.</text></div><div class="action" onclick="goHome"><text>Back to catalogue</text></div></div></template>
-<script>import router from '@system.router'
-export default { goHome() { router.replace({ uri: '/pages/index' }) } }</script>
+<template>
+  <div class="page">
+    <div class="header"><text class="back" onclick="goHome">‹</text><text class="header-title">APP DETAILS</text></div>
+    <div class="app-icon"><text>♫</text></div>
+    <text class="name">Mini Music</text><text class="category">MUSIC  ·  CATALOGUE DEMO</text>
+    <text class="description">Simple music controls for your wrist, shown here as a VelaStore catalogue concept.</text>
+    <div class="meta"><text>VERSION</text><text>1.0.0</text></div>
+    <div class="meta"><text>PACKAGE SIZE</text><text>420 KB</text></div>
+    <div class="meta"><text>COMPATIBILITY</text><text>Not verified</text></div>
+    <div class="notice"><text class="notice-title">PREVIEW LISTING</text><text class="notice-copy">Installation is not enabled for retail Watch S4 in this build.</text></div>
+    <div class="action" onclick="goHome"><text>Back to store</text></div>
+  </div>
+</template>
+<script>
+import router from '@system.router'
+export default { goHome() { router.replace({ uri: '/pages/index' }) } }
+</script>
 <style>
-.page{width:466px;height:466px;padding:22px 26px;box-sizing:border-box;flex-direction:column;align-items:center;background-color:#0d151d}.header{width:100%;height:40px;flex-direction:row;align-items:center}.back{color:#75c9e8;font-size:30px;width:35px}.heading{color:#f4f8fb;font-size:20px;font-weight:bold}.app-icon{width:62px;height:62px;margin-top:9px;border-radius:19px;background-color:#6646a8;justify-content:center;align-items:center}.app-icon text{color:#fff;font-size:36px}.name{color:#f4f8fb;font-size:22px;font-weight:bold;margin-top:7px}.category{color:#83c5df;font-size:9px;margin-top:3px}.description{color:#a9bdca;font-size:12px;text-align:center;margin-top:10px;line-height:17px}.meta{width:100%;height:31px;margin-top:5px;padding:0 4px;flex-direction:row;justify-content:space-between;align-items:center;border-bottom-width:1px;border-bottom-color:#243542}.meta text{color:#b9cbd5;font-size:10px}.notice{width:100%;margin-top:9px;padding:9px;box-sizing:border-box;border-radius:11px;background-color:#3a2b1c;flex-direction:column}.notice text{color:#f0bf79;font-size:9px;font-weight:bold}.notice .notice-copy{color:#d4bd9d;font-size:9px;font-weight:normal;margin-top:4px}.action{width:100%;height:39px;margin-top:9px;border-radius:12px;background-color:#1c526c;justify-content:center;align-items:center}.action text{color:#fff;font-size:12px;font-weight:bold}
+.page{width:466px;height:466px;padding:23px 40px 20px;box-sizing:border-box;flex-direction:column;align-items:center;background-color:#111318}
+.header{width:100%;height:40px;flex-direction:row;align-items:center}
+.back{color:#d8c8ff;font-size:30px;width:32px}
+.header-title{color:#b9b3c5;font-size:8px;letter-spacing:1.5px}
+.app-icon{width:70px;height:70px;margin-top:10px;border-radius:27px;background-color:#b6dfd1;justify-content:center;align-items:center}
+.app-icon text{color:#25312e;font-size:37px}
+.name{color:#f2eff8;font-size:22px;font-weight:bold;margin-top:8px}
+.category{color:#cbb8ff;font-size:8px;letter-spacing:0.7px;margin-top:4px}
+.description{color:#d0ccd8;font-size:11px;text-align:center;margin-top:13px;line-height:16px;width:100%}
+.meta{width:100%;height:31px;margin-top:5px;padding:0 4px;flex-direction:row;justify-content:space-between;align-items:center;border-bottom-width:1px;border-bottom-color:#343642}
+.meta text{color:#bdb9c8;font-size:9px}
+.notice{width:100%;margin-top:10px;padding:10px;box-sizing:border-box;border-radius:20px;background-color:#333044;flex-direction:column}
+.notice-title{color:#e4d8ff;font-size:9px;font-weight:bold}
+.notice-copy{color:#d0c8df;font-size:8px;margin-top:4px}
+.action{width:100%;height:39px;margin-top:11px;border-radius:21px;background-color:#d8c8ff;justify-content:center;align-items:center}
+.action text{color:#2a1b48;font-size:11px;font-weight:bold}
 </style>
