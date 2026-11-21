@@ -1,4 +1,4 @@
-name: Build VelaStore Xiaomi Vela RPK
+name: Build VelaStore and Mini Games
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  vela:
+  velastore:
     name: Build VelaStore
     runs-on: ubuntu-latest
     steps:
@@ -17,16 +17,15 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: '20'
-      - name: Install Vela dependencies
+      - name: Install VelaStore dependencies
         working-directory: watch
         run: npm install --no-audit --no-fund
-      - name: Build debug RPK
+      - name: Build VelaStore debug RPK
         working-directory: watch
         run: npm run build
-      - name: Verify and stage debug RPK
+      - name: Verify and stage VelaStore RPK
         run: |
           set -euo pipefail
-          find watch/dist -type f -name '*.rpk' -print
           RPK="$(find watch/dist -type f -name '*.debug.*.rpk' -print -quit)"
           test -n "$RPK"
           mkdir -p watch/artifacts
@@ -36,4 +35,36 @@ jobs:
         with:
           name: VelaStore-Xiaomi-Vela-Debug-RPK
           path: watch/artifacts/*.debug.*.rpk
+          if-no-files-found: error
+
+  mini-games:
+    name: Build ${{ matrix.game }} game
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        game: [tap-rush, memory-match, 2048-mini, snake-lite]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+      - name: Install game dependencies
+        working-directory: games/${{ matrix.game }}
+        run: npm install --no-audit --no-fund
+      - name: Build debug RPK
+        working-directory: games/${{ matrix.game }}
+        run: npm run build
+      - name: Verify RPK
+        run: |
+          set -euo pipefail
+          RPK="$(find "games/${{ matrix.game }}/dist" -type f -name '*.debug.*.rpk' -print -quit)"
+          test -n "$RPK"
+          mkdir -p games/artifacts
+          cp "$RPK" "games/artifacts/${{ matrix.game }}.debug.rpk"
+      - name: Upload game RPK
+        uses: actions/upload-artifact@v4
+        with:
+          name: VelaStore-${{ matrix.game }}-Debug-RPK
+          path: games/artifacts/${{ matrix.game }}.debug.rpk
           if-no-files-found: error
