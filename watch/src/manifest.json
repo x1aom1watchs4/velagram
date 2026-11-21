@@ -17,6 +17,9 @@
     },
     {
       "name": "system.crypto"
+    },
+    {
+      "name": "system.storage"
     }
   ],
   "config": {
