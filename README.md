@@ -1,17 +1,19 @@
 # VelaStore
 
-VelaStore is an experimental app catalogue prototype for Xiaomi Vela watches, initially designed around the 466×466 display class.
+VelaStore is an experimental app catalogue for Xiaomi Vela watches, initially designed for a 466×466 display.
 
-## Current scope
+## Version 1.0.0 preview
 
-- Browse a curated catalogue of sample apps.
-- Explore categories and app information.
-- View compatibility and release metadata.
-- Demonstrate the store interface without attempting installation.
+- Home screen with featured catalogue entries.
+- Category browser.
+- Individual information screens for sample apps.
+- My Library placeholder with an explicit installation status.
+- Settings and device compatibility notes.
+- English-only UI to avoid missing-glyph boxes on the target watch.
 
 ## Important compatibility note
 
-This repository contains a catalogue UI prototype. It does not currently install RPK packages, communicate with Xiaomi's private developer services, or modify watch firmware. Retail Xiaomi Watch S4 installation support is not confirmed.
+This project is a catalogue UI prototype. It does not install RPK packages, communicate with Xiaomi's private developer services, or modify watch firmware. Retail Xiaomi Watch S4 (M2425W1) installation support is not confirmed. App compatibility labels are deliberately marked as unverified.
 
 ## Build
 
@@ -23,4 +25,10 @@ npm install
 npm run build
 ```
 
-The build workflow uploads a debug RPK artifact when the toolkit produces one.
+GitHub Actions builds a debug RPK and uploads it as a workflow artifact when the toolkit produces the expected package.
+
+## Project structure
+
+- `watch/src/common/apps.js`: sample catalogue data.
+- `watch/src/pages/`: home, categories, app details, library and settings screens.
+- `watch/src/manifest.json`: app metadata and page routes.
