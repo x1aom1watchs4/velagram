@@ -1,6 +1,33 @@
-<template><div class="page"><div class="header"><text class="back" onclick="goHome">‹</text><text class="heading">My library</text></div><div class="empty-icon"><text>◫</text></div><text class="empty-title">Your library is empty</text><text class="empty-copy">Apps you install will appear here when a supported installation method is available.</text><div class="status"><text class="status-label">STORE STATUS</text><text class="status-value">CATALOGUE PREVIEW</text><text class="status-copy">No apps have been installed by VelaStore.</text></div><div class="action" onclick="goHome"><text>Explore catalogue</text></div></div></template>
-<script>import router from '@system.router'
-export default { goHome() { router.replace({ uri: '/pages/index' }) } }</script>
+<template>
+  <div class="page">
+    <div class="header"><text class="back" onclick="goHome">‹</text><div class="heading-copy"><text class="eyebrow">YOUR SPACE</text><text class="heading">My library</text></div></div>
+    <div class="empty-icon"><text>◫</text></div>
+    <text class="empty-title">Your collection<br/>starts here.</text>
+    <text class="empty-copy">Apps you install will appear here when a supported installation method becomes available.</text>
+    <div class="status"><div class="status-dot"></div><div class="status-copy"><text class="status-label">CURRENT STATUS</text><text class="status-value">Catalogue preview</text></div></div>
+    <div class="action" onclick="goHome"><text>Explore apps  ↗</text></div>
+  </div>
+</template>
+<script>
+import router from '@system.router'
+export default { goHome() { router.replace({ uri: '/pages/index' }) } }
+</script>
 <style>
-.page{width:466px;height:466px;padding:24px 28px;box-sizing:border-box;flex-direction:column;align-items:center;background-color:#141218}.header{width:100%;height:48px;flex-direction:row;align-items:center}.back{color:#d0bcff;font-size:30px;width:35px}.heading{color:#e6e0e9;font-size:22px;font-weight:bold}.empty-icon{width:78px;height:78px;margin-top:45px;border-radius:24px;background-color:#172f3d;justify-content:center;align-items:center}.empty-icon text{color:#d0bcff;font-size:38px}.empty-title{color:#e6e0e9;font-size:18px;font-weight:bold;margin-top:17px}.empty-copy{color:#cac4d0;font-size:12px;text-align:center;line-height:18px;margin-top:9px}.status{width:100%;margin-top:28px;padding:14px;box-sizing:border-box;border-radius:14px;background-color:#211f26;flex-direction:column}.status-label{color:#d0bcff;font-size:9px}.status-value{color:#e6e0e9;font-size:14px;font-weight:bold;margin-top:6px}.status-copy{color:#cac4d0;font-size:10px;margin-top:5px}.action{width:100%;height:43px;margin-top:20px;border-radius:18px;background-color:#4f378b;justify-content:center;align-items:center}.action text{color:#fff;font-size:13px;font-weight:bold}
+.page{width:466px;height:466px;padding:27px 40px 22px;box-sizing:border-box;flex-direction:column;align-items:center;background-color:#111318}
+.header{width:100%;height:48px;flex-direction:row;align-items:center}
+.back{color:#d8c8ff;font-size:31px;width:34px}
+.heading-copy{flex:1;flex-direction:column}
+.eyebrow{color:#b9a6e8;font-size:8px;letter-spacing:1.5px}
+.heading{color:#f2eff8;font-size:22px;font-weight:bold;margin-top:1px}
+.empty-icon{width:83px;height:83px;margin-top:23px;border-radius:31px;background-color:#b6dfd1;justify-content:center;align-items:center}
+.empty-icon text{color:#1d3931;font-size:40px}
+.empty-title{color:#f2eff8;font-size:20px;font-weight:bold;text-align:center;line-height:22px;margin-top:12px}
+.empty-copy{color:#c2c2cd;font-size:10px;text-align:center;line-height:15px;margin-top:8px}
+.status{width:100%;height:55px;margin-top:16px;padding:9px 12px;box-sizing:border-box;border-radius:22px;background-color:#20232b;flex-direction:row;align-items:center}
+.status-dot{width:10px;height:10px;border-radius:5px;background-color:#b6dfd1}
+.status-copy{flex:1;margin-left:10px;flex-direction:column}
+.status-label{color:#a9a5b3;font-size:7px;letter-spacing:1px}
+.status-value{color:#f2eff8;font-size:11px;font-weight:bold;margin-top:3px}
+.action{width:100%;height:41px;margin-top:13px;border-radius:22px;background-color:#d8c8ff;justify-content:center;align-items:center}
+.action text{color:#2a1b48;font-size:11px;font-weight:bold}
 </style>
