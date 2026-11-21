@@ -3,7 +3,7 @@
     <div class="header"><text class="back" onclick="goBack">‹</text><div class="heading-copy"><text class="eyebrow">VELASTORE</text><text class="title">Find an app</text></div></div>
     <div class="search-shell"><text class="search-icon">⌕</text><input class="search-input" placeholder="Search apps or categories" value="{{query}}" oninput="searchApps" /></div>
     <div class="result-heading"><text class="count">YOUR RESULTS</text><text class="count-number">{{results.length}}</text></div>
-    <list class="list"><list-item for="{{results}}" class="item" type="app" onclick="openDetails($item.id)"><div class="row"><div class="app-icon" style="background-color: {{ $item.color }};"><text class="symbol">{{ $item.symbol }}</text></div><div class="copy"><text class="name">{{ $item.name }}</text><text class="meta">{{ $item.category }}  ·  {{ $item.status }}</text></div><div class="arrow-wrap"><text class="arrow">›</text></div></div></list-item></list>
+    <list class="list"><list-item for="{{results}}" class="item" type="app" onclick="openDetails($item.id)"><div class="row"><div class="app-icon {{ $item.iconClass }}"><div class="disc"><div class="disc-hole"></div></div><div class="sun"></div><div class="cloud"></div><div class="timer-ring"><div class="timer-hand"></div><div class="timer-dot"></div></div><div class="paper"><div class="paper-line"></div><div class="paper-line"></div><div class="paper-line"></div></div></div><div class="copy"><text class="name">{{ $item.name }}</text><text class="meta">{{ $item.category }}  ·  {{ $item.status }}</text></div><div class="arrow-wrap"><text class="arrow">›</text></div></div></list-item></list>
     <text class="foot" onclick="goHome">BACK TO STORE</text>
   </div>
 </template>
@@ -42,8 +42,22 @@ export default {
 .list{width:100%;flex:1}
 .item{width:100%;height:58px;margin-bottom:7px;border-radius:22px;background-color:#20232b}
 .row{flex:1;padding:7px 9px;flex-direction:row;align-items:center}
-.app-icon{width:41px;height:41px;border-radius:17px;justify-content:center;align-items:center}
-.symbol{color:#20202a;font-size:21px}
+
+.app-icon{width:42px;height:42px;border-radius:17px;justify-content:center;align-items:center;flex-direction:row}
+.icon-music{background-color:#a9d4c6}
+.icon-weather{background-color:#ffcf9f}
+.icon-timer{background-color:#a9d8d2}
+.icon-notes{background-color:#e9bca8}
+.disc{width:25px;height:25px;border-radius:13px;background-color:#283c38;justify-content:center;align-items:center}
+.disc-hole{width:7px;height:7px;border-radius:4px;background-color:#bce6d8}
+.sun{width:17px;height:17px;border-radius:9px;background-color:#a85f35;margin-right:2px}
+.cloud{width:18px;height:11px;border-radius:7px;background-color:#fff1dd;margin-top:9px;margin-left:-7px}
+.timer-ring{width:23px;height:23px;border-radius:12px;border-width:3px;border-color:#245e5a;justify-content:center;align-items:center}
+.timer-hand{width:3px;height:9px;border-radius:2px;background-color:#245e5a;margin-top:-7px}
+.timer-dot{width:4px;height:4px;border-radius:2px;background-color:#245e5a;margin-left:-4px;margin-top:4px}
+.paper{width:19px;height:25px;border-radius:4px;background-color:#fff0e8;padding:5px 3px;box-sizing:border-box;flex-direction:column;justify-content:space-between}
+.paper-line{width:12px;height:2px;border-radius:1px;background-color:#9a5b49}
+
 .copy{flex:1;margin-left:10px;flex-direction:column}
 .name{color:#f2eff8;font-size:12px;font-weight:bold}
 .meta{color:#bdb9c8;font-size:8px;margin-top:3px}
