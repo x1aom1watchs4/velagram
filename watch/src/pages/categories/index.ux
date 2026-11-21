@@ -20,8 +20,7 @@ export default {
 .header{height:50px;flex-direction:row;align-items:center}
 .back{color:#d8c8ff;font-size:31px;width:34px}
 .heading-copy{flex:1;flex-direction:column}
-.eyebrow{color:#b9a6e8;font-size:8px;letter-spacing:1.5px}
-.heading{color:#f2eff8;font-size:22px;font-weight:bold;margin-top:1px}
+.eyebrow{color:#b9a6e8;font-size:8px;font-size:22px;font-weight:bold;margin-top:1px}
 .intro{color:#c2c2cd;font-size:11px;margin-top:9px;margin-bottom:15px}
 .item{width:100%;height:76px;margin-bottom:9px;padding:10px 12px;box-sizing:border-box;border-radius:26px;flex-direction:row;align-items:center}
 .utilities{background-color:#d8c8ff}
@@ -34,7 +33,6 @@ export default {
 .desc{color:#594f68;font-size:9px;margin-top:4px}
 .arrow{color:#35264e;font-size:20px}
 .footer{width:100%;flex-direction:column;align-items:center;margin-top:10px}
-.foot{color:#858594;font-size:7px;letter-spacing:1px}
-.action{width:100%;height:39px;margin-top:11px;border-radius:21px;background-color:#d8c8ff;justify-content:center;align-items:center}
+.foot{color:#858594;font-size:7px;height:39px;margin-top:11px;border-radius:21px;background-color:#d8c8ff;justify-content:center;align-items:center}
 .action text{color:#2a1b48;font-size:11px;font-weight:bold}
 </style>
