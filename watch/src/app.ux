@@ -1,0 +1,7 @@
+<script>
+/**manifest**/
+export default {
+  onCreate() {},
+  onDestroy() {}
+}
+</script>
