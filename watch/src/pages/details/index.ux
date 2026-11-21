@@ -1,0 +1,28 @@
+<template>
+  <div class="page">
+    <div class="header"><text class="back" onclick="goBack">‹</text><text class="title">App details</text></div>
+    <div class="app-icon" style="background-color: {{app.color}};"><text class="symbol">{{app.symbol}}</text></div>
+    <text class="name">{{app.name}}</text><text class="category">{{app.category}}  ·  VERSION {{app.version}}</text>
+    <text class="description">{{app.description}}</text>
+    <div class="info"><div class="cell"><text class="label">PACKAGE SIZE</text><text class="value">{{app.size}}</text></div><div class="cell"><text class="label">LISTING</text><text class="value">{{app.status}}</text></div></div>
+    <div class="notice"><text class="notice-title">INSTALLATION UNAVAILABLE</text><text class="notice-copy">This is a catalogue preview. It cannot install apps on a retail Watch S4 yet.</text></div>
+    <text class="foot" onclick="goHome">BACK TO HOME</text>
+  </div>
+</template>
+<script>
+import router from '@system.router'
+import apps from '../../common/apps'
+export default {
+  private: { app: apps[0] },
+  onInit() {
+    var id = this.$page && this.$page.params ? this.$page.params.appId : ''
+    var found = apps.filter(function (item) { return item.id === id })[0]
+    if (found) this.app = found
+  },
+  goBack() { router.back() },
+  goHome() { router.replace({ uri: '/pages/index' }) }
+}
+</script>
+<style>
+.page{width:466px;height:466px;padding:18px 25px;box-sizing:border-box;flex-direction:column;align-items:center;background-color:#0d151d}.header{width:100%;height:42px;flex-direction:row;align-items:center}.back{color:#75c9e8;font-size:30px;width:35px}.title{color:#f4f8fb;font-size:21px;font-weight:bold}.app-icon{width:67px;height:67px;margin-top:17px;border-radius:20px;justify-content:center;align-items:center}.symbol{color:#fff;font-size:36px}.name{color:#f4f8fb;font-size:22px;font-weight:bold;margin-top:11px}.category{color:#7eb6cf;font-size:10px;margin-top:5px}.description{color:#c1d0d9;font-size:13px;text-align:center;margin-top:16px;width:100%}.info{width:100%;flex-direction:row;justify-content:space-between;margin-top:20px}.cell{width:48%;height:53px;border-radius:11px;background-color:#17232e;padding:8px 10px;box-sizing:border-box;flex-direction:column}.label{color:#789bad;font-size:8px}.value{color:#f2f6f9;font-size:12px;margin-top:5px}.notice{width:100%;margin-top:16px;padding:12px;border-radius:11px;background-color:#3b3020;flex-direction:column}.notice-title{color:#f1c47c;font-size:10px;font-weight:bold}.notice-copy{color:#e0d2b8;font-size:10px;margin-top:5px}.foot{color:#70c7eb;font-size:11px;margin-top:20px}
+</style>
