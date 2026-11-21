@@ -1,0 +1,39 @@
+name: Build Velagram Xiaomi Vela RPK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  vela:
+    name: Build Xiaomi Vela RPK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+      - name: Install Vela dependencies
+        working-directory: watch
+        run: npm install --no-audit --no-fund
+      - name: Build Xiaomi Vela debug RPK
+        working-directory: watch
+        run: npm run build
+      - name: Verify and stage debug RPK
+        run: |
+          set -euo pipefail
+          find watch/dist -type f -name '*.rpk' -print
+          RPK="$(find watch/dist -type f -name '*.debug.*.rpk' -print -quit)"
+          test -n "$RPK"
+          mkdir -p watch/artifacts
+          cp "$RPK" watch/artifacts/
+      - name: Upload Xiaomi Watch debug RPK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Velagram-Xiaomi-Vela-Debug-RPK
+          path: watch/artifacts/*.debug.*.rpk
+          if-no-files-found: error
