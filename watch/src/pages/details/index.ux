@@ -5,10 +5,10 @@
     <text class="name">{{app.name}}</text><text class="category">{{app.category}}  ·  VERSION {{app.version}}</text>
     <text class="description">{{app.description}}</text>
     <div class="info">
-      <div class="cell"><text class="label">PACKAGE SIZE</text><text class="value">{{app.size}}</text></div>
-      <div class="cell"><text class="label">LISTING</text><text class="value">{{app.status}}</text></div>
+      <div class="cell"><text class="label">PACKAGE</text><text class="value">{{app.size}}</text></div>
+      <div class="cell"><text class="label">AVAILABILITY</text><text class="value">{{app.status}}</text></div>
     </div>
-    <div class="notice"><text class="notice-title">PACKAGE DOWNLOAD</text><text class="notice-text">{{downloadStatus}}</text></div>
+    <div class="notice"><text class="notice-title">DOWNLOAD TO WATCH</text><text class="notice-text">{{downloadStatus}}</text></div>
     <div class="action" onclick="downloadApp"><text>{{downloadLabel}}</text></div>
   </div>
 </template>
@@ -19,7 +19,7 @@ import request from '@system.request'
 import crypto from '@system.crypto'
 import storage from '@system.storage'
 export default {
-  private: { app: apps[0], downloadStatus: 'No verified package has been published yet.', downloadLabel: 'Package unavailable', downloading: false },
+  private: { app: apps[0], downloadStatus: 'Ready to download the RPK package.', downloadLabel: 'Download', downloading: false },
   onInit() {
     var id = this.$page && this.$page.params ? this.$page.params.appId : ''
     var found = apps.filter(function (item) { return item.id === id })[0]
@@ -31,12 +31,16 @@ export default {
     if (this.downloading) return
     var url = this.app && this.app.packageUrl
     var expected = this.app && this.app.sha256
-    if (!url || !expected) {
-      this.downloadStatus = 'No verified package has been published yet.'
+    if (!url) {
+      this.downloadStatus = 'This package is not published yet.'
       return
     }
-    if (url.indexOf('https://') !== 0 || !/^[0-9a-fA-F]{64}$/.test(expected)) {
-      this.downloadStatus = 'Package metadata is invalid. Download blocked.'
+    if (url.indexOf('https://') !== 0) {
+      this.downloadStatus = 'Package link is invalid. Download blocked.'
+      return
+    }
+    if (expected && !/^[0-9a-fA-F]{64}$/.test(expected)) {
+      this.downloadStatus = 'Package checksum metadata is invalid. Download blocked.'
       return
     }
     this.downloading = true
@@ -53,32 +57,35 @@ export default {
           return
         }
         this.downloadLabel = 'Downloading...'
-        this.downloadStatus = 'Download started. Checking the file when it finishes...'
+        this.downloadStatus = 'Download started. Waiting for completion...'
         request.onDownloadComplete({
           token: task.token,
           success: (result) => {
             try {
-              var actual = crypto.hashDigest({ uri: result.uri, algo: 'SHA256' })
-              if (String(actual).toLowerCase() !== String(expected).toLowerCase()) {
-                this.downloadStatus = 'Checksum mismatch. This package was rejected.'
-                this.downloadLabel = 'Try again'
-              } else {
-                this.downloadStatus = 'Downloaded and SHA-256 checked. Saved to My library.'
-                this.downloadLabel = 'Downloaded'
-                storage.get({ key: 'velastore_downloads', success: (res) => {
-                  var saved = res && res.data ? res.data : []
-                  if (typeof saved === 'string') { try { saved = JSON.parse(saved) } catch (e) { saved = [] } }
-                  if (!Array.isArray(saved)) saved = []
-                  var entry = { id: this.app.id, name: this.app.name, version: this.app.version, uri: result.uri }
-                  saved = saved.filter(function (item) { return item.id !== entry.id })
-                  saved.push(entry)
-                  storage.set({ key: 'velastore_downloads', value: JSON.stringify(saved) })
-                }, fail: () => {
-                  storage.set({ key: 'velastore_downloads', value: JSON.stringify([{ id: this.app.id, name: this.app.name, version: this.app.version, uri: result.uri }]) })
-                } })
+              if (expected) {
+                var actual = crypto.hashDigest({ uri: result.uri, algo: 'SHA256' })
+                if (String(actual).toLowerCase() !== String(expected).toLowerCase()) {
+                  this.downloadStatus = 'Checksum mismatch. This package was rejected.'
+                  this.downloadLabel = 'Try again'
+                  this.downloading = false
+                  return
+                }
               }
+              this.downloadStatus = 'Downloaded. Saved to My library.'
+              this.downloadLabel = 'Downloaded'
+              storage.get({ key: 'velastore_downloads', success: (res) => {
+                var saved = res && res.data ? res.data : []
+                if (typeof saved === 'string') { try { saved = JSON.parse(saved) } catch (e) { saved = [] } }
+                if (!Array.isArray(saved)) saved = []
+                var entry = { id: this.app.id, name: this.app.name, version: this.app.version, uri: result.uri }
+                saved = saved.filter(function (item) { return item.id !== entry.id })
+                saved.push(entry)
+                storage.set({ key: 'velastore_downloads', value: JSON.stringify(saved) })
+              }, fail: () => {
+                storage.set({ key: 'velastore_downloads', value: JSON.stringify([{ id: this.app.id, name: this.app.name, version: this.app.version, uri: result.uri }]) })
+              } })
             } catch (error) {
-              this.downloadStatus = 'Could not verify the downloaded file. It was not accepted.'
+              this.downloadStatus = 'Could not save the downloaded file.'
               this.downloadLabel = 'Try again'
             }
             this.downloading = false
@@ -104,7 +111,6 @@ export default {
 .header{width:100%;height:40px;flex-direction:row;align-items:center}
 .back{color:#d8c8ff;font-size:30px;width:32px}
 .header-title{color:#b9b3c5;font-size:8px;height:70px;margin-top:9px;border-radius:27px;justify-content:center;align-items:center}
-
 .app-icon{width:42px;height:42px;border-radius:17px;justify-content:center;align-items:center;flex-direction:row}
 .icon-music{background-color:#a9d4c6}
 .icon-weather{background-color:#ffcf9f}
@@ -119,7 +125,6 @@ export default {
 .timer-dot{width:4px;height:4px;border-radius:2px;background-color:#245e5a;margin-left:-4px;margin-top:4px}
 .paper{width:19px;height:25px;border-radius:4px;background-color:#fff0e8;padding:5px 3px;box-sizing:border-box;flex-direction:column;justify-content:space-between}
 .paper-line{width:12px;height:2px;border-radius:1px;background-color:#9a5b49}
-
 .name{color:#f2eff8;font-size:22px;font-weight:bold;margin-top:8px}
 .category{color:#cbb8ff;font-size:8px;margin-top:4px}
 .description{color:#d0ccd8;font-size:11px;text-align:center;margin-top:13px;width:100%}
@@ -127,14 +132,10 @@ export default {
 .cell{width:48%;height:52px;border-radius:20px;background-color:#20232b;padding:9px 11px;box-sizing:border-box;flex-direction:column}
 .label{color:#a9a5b3;font-size:7px;font-size:12px;margin-top:5px}
 .notice{width:100%;margin-top:13px;padding:10px;border-radius:20px;background-color:#333044;flex-direction:row;align-items:center}
-.notice-mark{width:25px;height:25px;border-radius:13px;background-color:#d8c8ff;justify-content:center;align-items:center}
-.notice-mark text{color:#2a1b48;font-size:15px;font-weight:bold}
-.notice-copy{flex:1;margin-left:9px;flex-direction:column}
 .notice-title{color:#e4d8ff;font-size:10px;font-weight:bold}
 .notice-text{color:#d0c8df;font-size:8px;margin-top:3px}
 .action{width:100%;height:39px;margin-top:12px;border-radius:21px;background-color:#d8c8ff;justify-content:center;align-items:center}
 .action text{color:#2a1b48;font-size:11px;font-weight:bold}
-
 .disc,.sun,.cloud,.timer-ring,.paper{display:none}
 .icon-music .disc{display:flex}
 .icon-weather .sun{display:flex}
