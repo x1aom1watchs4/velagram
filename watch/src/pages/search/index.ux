@@ -65,7 +65,7 @@ export default {
 .arrow{color:#dfd2ff;font-size:20px}
 .foot{color:#cbb8ff;font-size:8px;text-align:center;margin-top:8px}
 
-.app-icon>div{display:none}
+.disc,.sun,.cloud,.timer-ring,.paper{display:none}
 .icon-music .disc{display:flex}
 .icon-weather .sun{display:flex}
 .icon-weather .cloud{display:flex}
