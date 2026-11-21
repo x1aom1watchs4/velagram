@@ -1,19 +1,13 @@
 {
-  "package": "com.velagram",
-  "name": "Velagram",
+  "package": "com.velastore.catalog",
+  "name": "VelaStore",
   "versionName": "0.1.0",
   "versionCode": 1,
   "minPlatformVersion": 1000,
-  "deviceTypeList": [
-    "watch"
-  ],
+  "icon": "/common/icon.png",
+  "deviceTypeList": ["watch"],
   "features": [
-    {
-      "name": "system.router"
-    },
-    {
-      "name": "system.interconnect"
-    }
+    { "name": "system.router" }
   ],
   "config": {
     "logLevel": "info",
@@ -22,9 +16,7 @@
   "router": {
     "entry": "pages/index",
     "pages": {
-      "pages/index": {
-        "component": "index"
-      }
+      "pages/index": { "component": "index" }
     }
   }
 }

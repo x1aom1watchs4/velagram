@@ -1,9 +1,26 @@
-# Velagram
+# VelaStore
 
-Telegram companion app for Xiaomi Watch S4 running Xiaomi Vela OS.
+VelaStore is an experimental app catalogue prototype for Xiaomi Vela watches, initially designed around the 466×466 display class.
 
-## First milestone
+## Current scope
 
-Build and verify a minimal watch app before implementing Telegram features. The watch UI is based on the known Vela project layout and `aiot-toolkit` build setup used by WristAI; this repository has its own package ID (`com.velagram`).
+- Browse a curated catalogue of sample apps.
+- Explore categories and app information.
+- View compatibility and release metadata.
+- Demonstrate the store interface without attempting installation.
 
-The initial screen is only a launch/visibility check. Telegram sign-in, messaging, and phone companion integration are not implemented yet.
+## Important compatibility note
+
+This repository contains a catalogue UI prototype. It does not currently install RPK packages, communicate with Xiaomi's private developer services, or modify watch firmware. Retail Xiaomi Watch S4 installation support is not confirmed.
+
+## Build
+
+Requirements: Node.js 20+
+
+```sh
+cd watch
+npm install
+npm run build
+```
+
+The build workflow uploads a debug RPK artifact when the toolkit produces one.

@@ -1,40 +1,111 @@
 <template>
   <div class="page">
-    <div class="header">
-      <text class="logo">V</text>
-      <text class="title">Velagram</text>
+    <div class="topbar">
+      <div class="brand-mark"><text class="brand-letter">V</text></div>
+      <div class="brand-copy">
+        <text class="brand-title">VelaStore</text>
+        <text class="brand-subtitle">APP CATALOGUE</text>
+      </div>
+      <text class="search-mark">⌕</text>
     </div>
-    <div class="status-card">
-      <text class="status-title">Приложение запущено</text>
-      <text class="status-text">{{status}}</text>
+
+    <div class="hero">
+      <text class="eyebrow">МАГАЗИН ПРИЛОЖЕНИЙ</text>
+      <text class="hero-title">Открой больше</text>
+      <text class="hero-description">Подборка приложений для твоих часов</text>
+      <div class="hero-bottom">
+        <text class="hero-tag">КАТАЛОГ • 0.1.0</text>
+        <text class="hero-arrow">→</text>
+      </div>
     </div>
-    <div class="empty-card">
-      <text class="empty-title">Твои чаты</text>
-      <text class="empty-text">Здесь появятся сообщения Telegram</text>
+
+    <div class="section-heading">
+      <text class="section-title">Популярное</text>
+      <text class="section-link">Смотреть всё</text>
     </div>
-    <text class="footer">Xiaomi Vela OS</text>
+
+    <div class="app-card">
+      <div class="app-icon music-icon"><text class="app-icon-symbol">♫</text></div>
+      <div class="app-copy">
+        <text class="app-name">Mini Music</text>
+        <text class="app-description">Управление музыкой</text>
+        <text class="app-meta">МУЛЬТИМЕДИА  •  DEMO</text>
+      </div>
+      <text class="app-open">›</text>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon weather-icon"><text class="app-icon-symbol">☼</text></div>
+      <div class="app-copy">
+        <text class="app-name">Weather Lite</text>
+        <text class="app-description">Погода и прогноз</text>
+        <text class="app-meta">УТИЛИТЫ  •  DEMO</text>
+      </div>
+      <text class="app-open">›</text>
+    </div>
+
+    <div class="section-heading category-heading">
+      <text class="section-title">Категории</text>
+    </div>
+    <div class="category-row">
+      <div class="category-pill"><text class="category-symbol">◷</text><text class="category-name">Утилиты</text></div>
+      <div class="category-pill"><text class="category-symbol">♫</text><text class="category-name">Музыка</text></div>
+      <div class="category-pill"><text class="category-symbol">◎</text><text class="category-name">Здоровье</text></div>
+    </div>
+
+    <div class="bottom-note">
+      <text class="note-text">Демонстрационный каталог · установка пока недоступна</text>
+    </div>
   </div>
 </template>
+
 <script>
 export default {
-  private: {
-    status: 'Экран Velagram загружен'
-  },
-  onInit() {
-    this.status = 'Velagram работает на часах'
-  }
+  onInit() {}
 }
 </script>
+
 <style>
-.page { width:466px; height:466px; padding:28px 24px; box-sizing:border-box; flex-direction:column; background-color:#101820; }
-.header { width:100%; height:72px; flex-direction:row; align-items:center; }
-.logo { width:48px; height:48px; color:#ffffff; background-color:#269bd8; border-radius:16px; font-size:30px; font-weight:bold; text-align:center; }
-.title { color:#ffffff; font-size:30px; font-weight:bold; margin-left:12px; }
-.status-card { width:100%; padding:18px; margin-top:18px; background-color:#183348; border-radius:16px; flex-direction:column; }
-.status-title { color:#7bdcb5; font-size:21px; font-weight:bold; }
-.status-text { color:#d5e4ed; font-size:17px; margin-top:8px; }
-.empty-card { width:100%; flex:1; padding:18px; margin-top:14px; background-color:#192733; border-radius:16px; flex-direction:column; justify-content:center; }
-.empty-title { color:#ffffff; font-size:23px; font-weight:bold; }
-.empty-text { color:#a8bac8; font-size:17px; margin-top:10px; }
-.footer { color:#718696; font-size:14px; text-align:center; margin-top:12px; }
+.page {
+  width:466px;
+  height:466px;
+  padding:22px 24px 16px;
+  box-sizing:border-box;
+  flex-direction:column;
+  background-color:#0d151d;
+}
+.topbar { width:100%; height:54px; flex-direction:row; align-items:center; }
+.brand-mark { width:42px; height:42px; border-radius:14px; background-color:#269dd8; justify-content:center; align-items:center; }
+.brand-letter { color:#ffffff; font-size:27px; font-weight:bold; }
+.brand-copy { flex:1; margin-left:11px; flex-direction:column; }
+.brand-title { color:#f4f8fb; font-size:23px; font-weight:bold; }
+.brand-subtitle { color:#75a9c4; font-size:10px; letter-spacing:2px; margin-top:1px; }
+.search-mark { color:#d9e7ef; font-size:31px; width:36px; text-align:center; }
+.hero { width:100%; height:126px; margin-top:13px; padding:15px 17px; box-sizing:border-box; border-radius:18px; background-color:#173c51; flex-direction:column; }
+.eyebrow { color:#83d7e9; font-size:10px; letter-spacing:1px; }
+.hero-title { color:#ffffff; font-size:25px; font-weight:bold; margin-top:5px; }
+.hero-description { color:#c0d7e3; font-size:14px; margin-top:3px; }
+.hero-bottom { width:100%; flex-direction:row; justify-content:space-between; margin-top:7px; }
+.hero-tag { color:#91b6c8; font-size:10px; }
+.hero-arrow { color:#ffffff; font-size:19px; }
+.section-heading { width:100%; height:29px; margin-top:13px; flex-direction:row; justify-content:space-between; align-items:center; }
+.section-title { color:#f1f6fa; font-size:17px; font-weight:bold; }
+.section-link { color:#65bce1; font-size:12px; }
+.app-card { width:100%; height:65px; margin-top:7px; padding:8px 10px; box-sizing:border-box; border-radius:14px; background-color:#17232e; flex-direction:row; align-items:center; }
+.app-icon { width:43px; height:43px; border-radius:13px; justify-content:center; align-items:center; }
+.music-icon { background-color:#6646a8; }
+.weather-icon { background-color:#bd7b35; }
+.app-icon-symbol { color:#ffffff; font-size:25px; }
+.app-copy { flex:1; margin-left:10px; flex-direction:column; }
+.app-name { color:#f5f8fa; font-size:15px; font-weight:bold; }
+.app-description { color:#a9bdca; font-size:12px; margin-top:2px; }
+.app-meta { color:#6f9ab0; font-size:9px; margin-top:3px; }
+.app-open { color:#8ca9ba; font-size:25px; width:20px; text-align:center; }
+.category-heading { margin-top:8px; }
+.category-row { width:100%; flex-direction:row; justify-content:space-between; margin-top:5px; }
+.category-pill { width:126px; height:37px; border-radius:12px; background-color:#17232e; flex-direction:row; align-items:center; justify-content:center; }
+.category-symbol { color:#7bc9e7; font-size:17px; margin-right:6px; }
+.category-name { color:#dce7ed; font-size:12px; }
+.bottom-note { width:100%; margin-top:10px; align-items:center; }
+.note-text { color:#718796; font-size:9px; text-align:center; }
 </style>

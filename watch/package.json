@@ -1,8 +1,8 @@
 {
-  "name": "velagram-watch",
-  "version": "1.0.0",
+  "name": "velastore-watch",
+  "version": "0.1.0",
   "private": true,
-  "description": "Velagram client for Xiaomi Vela OS",
+  "description": "VelaStore catalogue prototype for Xiaomi Vela OS",
   "scripts": {
     "build": "aiot build",
     "release": "aiot release"
