@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="header"><text class="back" onclick="goHome">‹</text><text class="header-title">APP DETAILS</text></div>
-    <div class="app-icon"><text>♫</text></div>
+    <div class="app-icon icon-music"><div class="disc"><div class="disc-hole"></div></div><div class="sun"></div><div class="cloud"></div><div class="timer-ring"><div class="timer-hand"></div><div class="timer-dot"></div></div><div class="paper"><div class="paper-line"></div><div class="paper-line"></div><div class="paper-line"></div></div></div>
     <text class="name">Mini Music</text><text class="category">MUSIC  ·  CATALOGUE DEMO</text>
     <text class="description">Simple music controls for your wrist, shown here as a VelaStore catalogue concept.</text>
     <div class="meta"><text>VERSION</text><text>1.0.0</text></div>
@@ -20,7 +20,22 @@ export default { goHome() { router.replace({ uri: '/pages/index' }) } }
 .header{width:100%;height:40px;flex-direction:row;align-items:center}
 .back{color:#d8c8ff;font-size:30px;width:32px}
 .header-title{color:#b9b3c5;font-size:8px;height:70px;margin-top:10px;border-radius:27px;background-color:#b6dfd1;justify-content:center;align-items:center}
-.app-icon text{color:#25312e;font-size:37px}
+
+.app-icon{width:42px;height:42px;border-radius:17px;justify-content:center;align-items:center;flex-direction:row}
+.icon-music{background-color:#a9d4c6}
+.icon-weather{background-color:#ffcf9f}
+.icon-timer{background-color:#a9d8d2}
+.icon-notes{background-color:#e9bca8}
+.disc{width:25px;height:25px;border-radius:13px;background-color:#283c38;justify-content:center;align-items:center}
+.disc-hole{width:7px;height:7px;border-radius:4px;background-color:#bce6d8}
+.sun{width:17px;height:17px;border-radius:9px;background-color:#a85f35;margin-right:2px}
+.cloud{width:18px;height:11px;border-radius:7px;background-color:#fff1dd;margin-top:9px;margin-left:-7px}
+.timer-ring{width:23px;height:23px;border-radius:12px;border-width:3px;border-color:#245e5a;justify-content:center;align-items:center}
+.timer-hand{width:3px;height:9px;border-radius:2px;background-color:#245e5a;margin-top:-7px}
+.timer-dot{width:4px;height:4px;border-radius:2px;background-color:#245e5a;margin-left:-4px;margin-top:4px}
+.paper{width:19px;height:25px;border-radius:4px;background-color:#fff0e8;padding:5px 3px;box-sizing:border-box;flex-direction:column;justify-content:space-between}
+.paper-line{width:12px;height:2px;border-radius:1px;background-color:#9a5b49}
+
 .name{color:#f2eff8;font-size:22px;font-weight:bold;margin-top:8px}
 .category{color:#cbb8ff;font-size:8px;margin-top:4px}
 .description{color:#d0ccd8;font-size:11px;text-align:center;margin-top:13px;line-height:16px;width:100%}
