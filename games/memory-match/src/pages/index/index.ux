@@ -1,0 +1,58 @@
+<template>
+  <div class="page">
+    <text class="eyebrow">VELA MINI GAMES · 02</text>
+    <text class="title">Memory Match</text>
+    <text class="subtitle">Find the matching pairs</text>
+    <text class="stats">PAIRS {{pairs}} / 4</text>
+    <div class="grid">
+      <div class="tile" onclick="choose(0)"><text>{{shown[0]}}</text></div>
+      <div class="tile" onclick="choose(1)"><text>{{shown[1]}}</text></div>
+      <div class="tile" onclick="choose(2)"><text>{{shown[2]}}</text></div>
+      <div class="tile" onclick="choose(3)"><text>{{shown[3]}}</text></div>
+      <div class="tile" onclick="choose(4)"><text>{{shown[4]}}</text></div>
+      <div class="tile" onclick="choose(5)"><text>{{shown[5]}}</text></div>
+      <div class="tile" onclick="choose(6)"><text>{{shown[6]}}</text></div>
+      <div class="tile" onclick="choose(7)"><text>{{shown[7]}}</text></div>
+    </div>
+    <text class="message">{{message}}</text>
+    <div class="reset" onclick="resetGame"><text>SHUFFLE</text></div>
+  </div>
+</template>
+<script>
+export default {
+  private: { values: ['●','▲','■','◆','■','●','◆','▲'], shown: ['?','?','?','?','?','?','?','?'], first: -1, pairs: 0, locked: false, message: 'Tap two tiles to match.' },
+  choose(index) {
+    if (this.locked || this.shown[index] !== '?') return
+    this.shown.splice(index, 1, this.values[index])
+    if (this.first < 0) { this.first = index; return }
+    if (this.values[this.first] === this.values[index]) {
+      this.pairs += 1
+      this.first = -1
+      this.message = this.pairs === 4 ? 'Perfect! All pairs found.' : 'A match! Find another.'
+    } else {
+      this.locked = true
+      this.message = 'Not a match. Tap SHUFFLE to retry.'
+      this.first = -1
+    }
+  },
+  resetGame() {
+    this.values = ['◆','●','▲','■','▲','◆','■','●']
+    this.shown = ['?','?','?','?','?','?','?','?']
+    this.first = -1; this.pairs = 0; this.locked = false
+    this.message = 'Tap two tiles to match.'
+  }
+}
+</script>
+<style>
+.page{width:466px;height:466px;padding:30px 62px 20px;box-sizing:border-box;align-items:center;flex-direction:column;background-color:#111318}
+.eyebrow{color:#a9d4c6;font-size:8px;margin-top:2px}
+.title{color:#f2eff8;font-size:24px;font-weight:bold;margin-top:5px}
+.subtitle{color:#c4bfce;font-size:10px;margin-top:4px}
+.stats{color:#a9d4c6;font-size:10px;font-weight:bold;margin-top:12px}
+.grid{width:252px;height:178px;flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-content:space-between;margin-top:8px}
+.tile{width:58px;height:78px;border-radius:16px;background-color:#263b37;justify-content:center;align-items:center}
+.tile text{color:#d4f2e7;font-size:25px;font-weight:bold}
+.message{color:#ddd5ee;font-size:9px;margin-top:10px;text-align:center}
+.reset{width:130px;height:34px;border-radius:18px;background-color:#a9d4c6;justify-content:center;align-items:center;margin-top:9px}
+.reset text{color:#183b32;font-size:9px;font-weight:bold}
+</style>
