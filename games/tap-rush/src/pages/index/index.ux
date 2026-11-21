@@ -1,0 +1,36 @@
+<template>
+  <div class="page">
+    <text class="eyebrow">VELA MINI GAMES · 01</text>
+    <text class="title">Tap Rush</text>
+    <text class="subtitle">Tap the target 30 times!</text>
+    <div class="score"><text class="score-num">{{score}}</text><text class="score-label"> / 30 TAPS</text></div>
+    <div class="target" onclick="tapTarget"><text class="target-text">TAP!</text></div>
+    <text class="message">{{message}}</text>
+    <div class="reset" onclick="resetGame"><text>RESTART</text></div>
+  </div>
+</template>
+<script>
+export default {
+  private: { score: 0, message: 'Ready? Go!' },
+  tapTarget() {
+    if (this.score >= 30) return
+    this.score += 1
+    this.message = this.score >= 30 ? 'You did it! Great tapping.' : 'Keep going!'
+  },
+  resetGame() { this.score = 0; this.message = 'Ready? Go!' }
+}
+</script>
+<style>
+.page{width:466px;height:466px;padding:52px 42px;box-sizing:border-box;align-items:center;flex-direction:column;background-color:#111318}
+.eyebrow{color:#b9a6e8;font-size:9px;margin-top:4px}
+.title{color:#f2eff8;font-size:30px;font-weight:bold;margin-top:9px}
+.subtitle{color:#c4bfce;font-size:12px;margin-top:8px}
+.score{flex-direction:row;align-items:baseline;margin-top:23px}
+.score-num{color:#f2eff8;font-size:43px;font-weight:bold}
+.score-label{color:#b9a6e8;font-size:10px;margin-left:5px}
+.target{width:174px;height:174px;border-radius:87px;background-color:#d8c8ff;justify-content:center;align-items:center;margin-top:15px}
+.target-text{color:#2b1b4d;font-size:27px;font-weight:bold}
+.message{color:#ddd5ee;font-size:12px;margin-top:17px}
+.reset{width:142px;height:39px;border-radius:20px;background-color:#292632;justify-content:center;align-items:center;margin-top:15px}
+.reset text{color:#e4d9ff;font-size:10px;font-weight:bold}
+</style>
