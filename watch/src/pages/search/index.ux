@@ -12,6 +12,10 @@ import router from '@system.router'
 import apps from '../../common/apps'
 export default {
   private: { query: '', results: apps },
+  onInit() {
+    var category = this.$page && this.$page.params ? this.$page.params.category : ''
+    if (category) { this.query = category; this.searchApps(category) }
+  },
   searchApps(value) {
     this.query = value
     var q = (value || '').toLowerCase()
