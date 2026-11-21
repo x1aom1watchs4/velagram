@@ -1,12 +1,15 @@
 <template>
   <div class="page">
-    <div class="header"><text class="back" onclick="goBack">‹</text><text class="title">App details</text></div>
+    <div class="header"><text class="back" onclick="goBack">‹</text><text class="header-title">APP DETAILS</text></div>
     <div class="app-icon" style="background-color: {{app.color}};"><text class="symbol">{{app.symbol}}</text></div>
     <text class="name">{{app.name}}</text><text class="category">{{app.category}}  ·  VERSION {{app.version}}</text>
     <text class="description">{{app.description}}</text>
-    <div class="info"><div class="cell"><text class="label">PACKAGE SIZE</text><text class="value">{{app.size}}</text></div><div class="cell"><text class="label">LISTING</text><text class="value">{{app.status}}</text></div></div>
-    <div class="notice"><text class="notice-title">INSTALLATION UNAVAILABLE</text><text class="notice-copy">This is a catalogue preview. It cannot install apps on a retail Watch S4 yet.</text></div>
-    <text class="foot" onclick="goHome">BACK TO HOME</text>
+    <div class="info">
+      <div class="cell"><text class="label">PACKAGE SIZE</text><text class="value">{{app.size}}</text></div>
+      <div class="cell"><text class="label">LISTING</text><text class="value">{{app.status}}</text></div>
+    </div>
+    <div class="notice"><div class="notice-mark"><text>i</text></div><div class="notice-copy"><text class="notice-title">Preview listing</text><text class="notice-text">Installation is not enabled for retail Watch S4 in this build.</text></div></div>
+    <div class="action" onclick="goHome"><text>Back to store</text></div>
   </div>
 </template>
 <script>
@@ -24,5 +27,25 @@ export default {
 }
 </script>
 <style>
-.page{width:466px;height:466px;padding:18px 25px;box-sizing:border-box;flex-direction:column;align-items:center;background-color:#141218}.header{width:100%;height:42px;flex-direction:row;align-items:center}.back{color:#d0bcff;font-size:30px;width:35px}.title{color:#e6e0e9;font-size:21px;font-weight:bold}.app-icon{width:67px;height:67px;margin-top:17px;border-radius:20px;justify-content:center;align-items:center}.symbol{color:#fff;font-size:36px}.name{color:#e6e0e9;font-size:22px;font-weight:bold;margin-top:11px}.category{color:#d0bcff;font-size:10px;margin-top:5px}.description{color:#c1d0d9;font-size:13px;text-align:center;margin-top:16px;width:100%}.info{width:100%;flex-direction:row;justify-content:space-between;margin-top:20px}.cell{width:48%;height:53px;border-radius:14px;background-color:#211f26;padding:8px 10px;box-sizing:border-box;flex-direction:column}.label{color:#938f99;font-size:8px}.value{color:#f2f6f9;font-size:12px;margin-top:5px}.notice{width:100%;margin-top:16px;padding:12px;border-radius:14px;background-color:#3b3425;flex-direction:column}.notice-title{color:#e8c98a;font-size:10px;font-weight:bold}.notice-copy{color:#d8c9a5;font-size:10px;margin-top:5px}.foot{color:#d0bcff;font-size:11px;margin-top:20px}
+.page{width:466px;height:466px;padding:22px 40px 20px;box-sizing:border-box;flex-direction:column;align-items:center;background-color:#111318}
+.header{width:100%;height:40px;flex-direction:row;align-items:center}
+.back{color:#d8c8ff;font-size:30px;width:32px}
+.header-title{color:#b9b3c5;font-size:8px;letter-spacing:1.5px}
+.app-icon{width:70px;height:70px;margin-top:9px;border-radius:27px;justify-content:center;align-items:center}
+.symbol{color:#20202a;font-size:37px}
+.name{color:#f2eff8;font-size:22px;font-weight:bold;margin-top:8px}
+.category{color:#cbb8ff;font-size:8px;letter-spacing:0.7px;margin-top:4px}
+.description{color:#d0ccd8;font-size:11px;text-align:center;margin-top:13px;width:100%}
+.info{width:100%;flex-direction:row;justify-content:space-between;margin-top:16px}
+.cell{width:48%;height:52px;border-radius:20px;background-color:#20232b;padding:9px 11px;box-sizing:border-box;flex-direction:column}
+.label{color:#a9a5b3;font-size:7px;letter-spacing:0.7px}
+.value{color:#f2eff8;font-size:12px;margin-top:5px}
+.notice{width:100%;margin-top:13px;padding:10px;border-radius:20px;background-color:#333044;flex-direction:row;align-items:center}
+.notice-mark{width:25px;height:25px;border-radius:13px;background-color:#d8c8ff;justify-content:center;align-items:center}
+.notice-mark text{color:#2a1b48;font-size:15px;font-weight:bold}
+.notice-copy{flex:1;margin-left:9px;flex-direction:column}
+.notice-title{color:#e4d8ff;font-size:10px;font-weight:bold}
+.notice-text{color:#d0c8df;font-size:8px;margin-top:3px}
+.action{width:100%;height:39px;margin-top:12px;border-radius:21px;background-color:#d8c8ff;justify-content:center;align-items:center}
+.action text{color:#2a1b48;font-size:11px;font-weight:bold}
 </style>
