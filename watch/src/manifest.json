@@ -11,6 +11,12 @@
   "features": [
     {
       "name": "system.router"
+    },
+    {
+      "name": "system.request"
+    },
+    {
+      "name": "system.crypto"
     }
   ],
   "config": {
