@@ -62,7 +62,7 @@ export default {
 .action{width:100%;height:39px;margin-top:12px;border-radius:21px;background-color:#d8c8ff;justify-content:center;align-items:center}
 .action text{color:#2a1b48;font-size:11px;font-weight:bold}
 
-.app-icon>div{display:none}
+.disc,.sun,.cloud,.timer-ring,.paper{display:none}
 .icon-music .disc{display:flex}
 .icon-weather .sun{display:flex}
 .icon-weather .cloud{display:flex}
