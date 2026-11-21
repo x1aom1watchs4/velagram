@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "store": {
+    "id": "com.velastore.catalog",
+    "name": "VelaStore",
+    "catalogVersion": 1,
+    "generatedAt": "2026-11-21T00:00:00Z"
+  },
+  "apps": [
+    {
+      "id": "mini-music",
+      "name": "Mini Music",
+      "category": "Music",
+      "description": "Simple music controls for your wrist.",
+      "version": "1.0.0",
+      "packageSize": 430080,
+      "compatibility": ["vela-watch"],
+      "availability": "catalog-only"
+    },
+    {
+      "id": "weather-lite",
+      "name": "Weather Lite",
+      "category": "Utilities",
+      "description": "A compact weather and forecast concept.",
+      "version": "1.2.0",
+      "packageSize": 573440,
+      "compatibility": ["vela-watch"],
+      "availability": "catalog-only"
+    },
+    {
+      "id": "focus-timer",
+      "name": "Focus Timer",
+      "category": "Utilities",
+      "description": "A minimal timer concept for focused sessions.",
+      "version": "1.0.0",
+      "packageSize": 317440,
+      "compatibility": ["vela-watch"],
+      "availability": "catalog-only"
+    },
+    {
+      "id": "pulse-notes",
+      "name": "Pulse Notes",
+      "category": "Productivity",
+      "description": "Short notes and reminders concept.",
+      "version": "0.8.0",
+      "packageSize": 399360,
+      "compatibility": ["vela-watch"],
+      "availability": "catalog-only"
+    }
+  ]
+}
