@@ -69,7 +69,6 @@ jobs:
           path: games/artifacts/${{ matrix.game }}.debug.rpk
           if-no-files-found: error
 
-
   publish-package:
     name: Publish one VelaStore package
     runs-on: ubuntu-latest
@@ -94,7 +93,10 @@ jobs:
           name: VelaStore nightly package
           prerelease: true
           make_latest: false
-          files: VelaStore-all-apps.zip
+          files: |
+            VelaStore-all-apps.zip
+            dist/*.rpk
           body: |
             One ZIP containing VelaStore and the four demo game RPK packages.
+            Individual game RPK files are also published for in-app downloads.
             These are debug builds. Downloading a package does not guarantee that Xiaomi Watch S4 firmware permits installation.
