@@ -19,11 +19,10 @@ export default { goHome() { router.replace({ uri: '/pages/index' }) } }
 .page{width:466px;height:466px;padding:23px 40px 20px;box-sizing:border-box;flex-direction:column;align-items:center;background-color:#111318}
 .header{width:100%;height:40px;flex-direction:row;align-items:center}
 .back{color:#d8c8ff;font-size:30px;width:32px}
-.header-title{color:#b9b3c5;font-size:8px;letter-spacing:1.5px}
-.app-icon{width:70px;height:70px;margin-top:10px;border-radius:27px;background-color:#ffd3ad;justify-content:center;align-items:center}
+.header-title{color:#b9b3c5;font-size:8px;height:70px;margin-top:10px;border-radius:27px;background-color:#ffd3ad;justify-content:center;align-items:center}
 .app-icon text{color:#25312e;font-size:37px}
 .name{color:#f2eff8;font-size:22px;font-weight:bold;margin-top:8px}
-.category{color:#cbb8ff;font-size:8px;letter-spacing:0.7px;margin-top:4px}
+.category{color:#cbb8ff;font-size:8px;margin-top:4px}
 .description{color:#d0ccd8;font-size:11px;text-align:center;margin-top:13px;line-height:16px;width:100%}
 .meta{width:100%;height:31px;margin-top:5px;padding:0 4px;flex-direction:row;justify-content:space-between;align-items:center;border-bottom-width:1px;border-bottom-color:#343642}
 .meta text{color:#bdb9c8;font-size:9px}
