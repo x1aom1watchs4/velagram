@@ -64,4 +64,11 @@ export default {
 .arrow-wrap{width:25px;height:25px;border-radius:13px;background-color:#35313f;justify-content:center;align-items:center}
 .arrow{color:#dfd2ff;font-size:20px}
 .foot{color:#cbb8ff;font-size:8px;text-align:center;margin-top:8px}
+
+.app-icon>div{display:none}
+.icon-music .disc{display:flex}
+.icon-weather .sun{display:flex}
+.icon-weather .cloud{display:flex}
+.icon-timer .timer-ring{display:flex}
+.icon-notes .paper{display:flex}
 </style>
