@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   velastore:
@@ -68,3 +68,33 @@ jobs:
           name: VelaStore-${{ matrix.game }}-Debug-RPK
           path: games/artifacts/${{ matrix.game }}.debug.rpk
           if-no-files-found: error
+
+
+  publish-package:
+    name: Publish one VelaStore package
+    runs-on: ubuntu-latest
+    needs: [velastore, mini-games]
+    steps:
+      - name: Download all built RPK files
+        uses: actions/download-artifact@v4
+        with:
+          pattern: VelaStore-*-Debug-RPK
+          path: dist
+          merge-multiple: true
+      - name: Create one ZIP and checksums
+        run: |
+          set -euo pipefail
+          test "$(find dist -type f -name '*.rpk' | wc -l)" -ge 5
+          (cd dist && sha256sum *.rpk > SHA256SUMS.txt)
+          zip -j VelaStore-all-apps.zip dist/*.rpk dist/SHA256SUMS.txt
+      - name: Publish package release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: nightly
+          name: VelaStore nightly package
+          prerelease: true
+          make_latest: false
+          files: VelaStore-all-apps.zip
+          body: |
+            One ZIP containing VelaStore and the four demo game RPK packages.
+            These are debug builds. Downloading a package does not guarantee that Xiaomi Watch S4 firmware permits installation.
