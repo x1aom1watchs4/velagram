@@ -1,0 +1,66 @@
+<template>
+  <div class="page">
+    <text class="eyebrow">VELA MINI GAMES · 03</text>
+    <text class="title">2048 Mini</text>
+    <text class="subtitle">Merge tiles to reach 2048</text>
+    <text class="score">SCORE {{score}}</text>
+    <div class="board">
+      <div class="cell"><text>{{tiles[0]}}</text></div><div class="cell"><text>{{tiles[1]}}</text></div><div class="cell"><text>{{tiles[2]}}</text></div><div class="cell"><text>{{tiles[3]}}</text></div>
+      <div class="cell"><text>{{tiles[4]}}</text></div><div class="cell"><text>{{tiles[5]}}</text></div><div class="cell"><text>{{tiles[6]}}</text></div><div class="cell"><text>{{tiles[7]}}</text></div>
+      <div class="cell"><text>{{tiles[8]}}</text></div><div class="cell"><text>{{tiles[9]}}</text></div><div class="cell"><text>{{tiles[10]}}</text></div><div class="cell"><text>{{tiles[11]}}</text></div>
+      <div class="cell"><text>{{tiles[12]}}</text></div><div class="cell"><text>{{tiles[13]}}</text></div><div class="cell"><text>{{tiles[14]}}</text></div><div class="cell"><text>{{tiles[15]}}</text></div>
+    </div>
+    <div class="controls">
+      <div class="control" onclick="move('left')"><text>‹</text></div>
+      <div class="control" onclick="move('up')"><text>↑</text></div>
+      <div class="control" onclick="move('down')"><text>↓</text></div>
+      <div class="control" onclick="move('right')"><text>›</text></div>
+    </div>
+    <div class="reset" onclick="resetGame"><text>NEW GAME</text></div>
+  </div>
+</template>
+<script>
+export default {
+  private: { tiles: [2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], score: 0, turn: 0 },
+  move(direction) {
+    var t = this.tiles.slice()
+    var lines = []
+    if (direction === 'left' || direction === 'right') {
+      for (var r=0;r<4;r++) { var row=t.slice(r*4,r*4+4); if(direction==='right') row.reverse(); lines.push(row) }
+    } else {
+      for (var c=0;c<4;c++) { var col=[t[c],t[c+4],t[c+8],t[c+12]]; if(direction==='down') col.reverse(); lines.push(col) }
+    }
+    var gained=0
+    lines = lines.map(function(line) {
+      var a=line.filter(function(v){return v>0}), out=[]
+      for(var i=0;i<a.length;i++){ if(a[i]===a[i+1]){out.push(a[i]*2);gained+=a[i]*2;i++}else out.push(a[i]) }
+      while(out.length<4) out.push(0)
+      return out
+    })
+    if(direction==='left'||direction==='right'){
+      for(var rr=0;rr<4;rr++){var ln=lines[rr];if(direction==='right')ln.reverse();for(var cc=0;cc<4;cc++)t[rr*4+cc]=ln[cc]}
+    }else{
+      for(var c2=0;c2<4;c2++){var cl=lines[c2];if(direction==='down')cl.reverse();for(var r2=0;r2<4;r2++)t[r2*4+c2]=cl[r2]}
+    }
+    var empty=[];for(var k=0;k<16;k++)if(t[k]===0)empty.push(k)
+    if(empty.length){var spot=empty[Math.floor(Math.random()*empty.length)];t[spot]=Math.random()<0.85?2:4}
+    this.tiles=t;this.score+=gained;this.turn+=1
+  },
+  resetGame(){this.tiles=[2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];this.score=0;this.turn=0}
+}
+</script>
+<style>
+.page{width:466px;height:466px;padding:26px 66px 18px;box-sizing:border-box;align-items:center;flex-direction:column;background-color:#111318}
+.eyebrow{color:#ffcf9f;font-size:8px;margin-top:1px}
+.title{color:#f2eff8;font-size:25px;font-weight:bold;margin-top:5px}
+.subtitle{color:#c4bfce;font-size:9px;margin-top:4px}
+.score{color:#ffcf9f;font-size:10px;font-weight:bold;margin-top:8px}
+.board{width:232px;height:232px;padding:7px;box-sizing:border-box;border-radius:18px;background-color:#544337;flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-content:space-between;margin-top:9px}
+.cell{width:51px;height:51px;border-radius:10px;background-color:#f1dfc9;justify-content:center;align-items:center}
+.cell text{color:#49372b;font-size:16px;font-weight:bold}
+.controls{width:220px;flex-direction:row;justify-content:space-between;margin-top:9px}
+.control{width:43px;height:32px;border-radius:16px;background-color:#ffcf9f;justify-content:center;align-items:center}
+.control text{color:#4c3322;font-size:20px;font-weight:bold}
+.reset{width:118px;height:30px;border-radius:15px;background-color:#332a25;justify-content:center;align-items:center;margin-top:7px}
+.reset text{color:#ffe0c1;font-size:8px;font-weight:bold}
+</style>
