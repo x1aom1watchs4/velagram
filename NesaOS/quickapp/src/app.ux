@@ -1,0 +1,10 @@
+<script>
+export default {
+  onCreate() {
+    console.log("NesaOS shell started")
+  },
+  onDestroy() {
+    console.log("NesaOS shell stopped")
+  }
+}
+</script>
