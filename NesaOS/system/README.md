@@ -19,6 +19,14 @@ The public openvela manifest contains a Xiaomi vendor project at `vendor/xiaomi/
 
 The official Xiaomi Vela documentation says real-device debugging is currently supported only on Xiaomi Watch S4 devices, but requires a special OTA version and is open only to specific partners. That is an app-debugging workflow, not a documented replacement-firmware installation path.
 
+## Native NesaOS component
+
+The first native product-layer component is [NesaOS Home](./apps/nesaos_home/README.md). It is written in C and uses openvela's LVGL/NuttX display integration. It draws the first turquoise, light-blue and brown home-screen layout, with tappable demo tiles.
+
+The tiles currently report their intended app target; they do not launch applications yet. The component has not been compiled or run against a pinned openvela checkout. Treat it as initial native source, not a verified binary or complete launcher.
+
+Integration instructions and the exact source files are in [apps/nesaos_home](./apps/nesaos_home/).
+
 ## First system milestone: upstream reference build
 
 The immediate build target is the officially documented openvela ARM64 emulator configuration:
