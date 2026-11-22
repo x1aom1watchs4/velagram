@@ -74,10 +74,11 @@ fi
 cat <<'NEXT'
 
 Next steps (not performed automatically):
-1. Inspect the actual parent Kconfig structure in this checkout.
-2. Add this source line beside the other packages/demos Kconfig entries:
-   source "$(APPDIR)/packages/demos/nesaos_home/Kconfig"
-3. Open menuconfig, enable NESAOS_HOME, save, then build the selected emulator target.
+1. Open menuconfig for the selected supported emulator target.
+2. Search for NESAOS_HOME and enable it if the option is present.
+3. If the option is absent, inspect how this checkout aggregates packages/demos
+   Kconfig files; do not add a guessed parent Kconfig path.
+4. Save the configuration and attempt the emulator build.
 
 This script does not change any board configuration, bootloader, device firmware,
 or signing settings. NesaOS Home is a native demo component, not a complete OS.
