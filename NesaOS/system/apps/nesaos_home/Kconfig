@@ -1,0 +1,23 @@
+menuconfig NESAOS_HOME
+	bool "NesaOS Home"
+	depends on GRAPHICS_LVGL
+	default n
+	---help---
+		Build the first native NesaOS home-screen application.
+
+if NESAOS_HOME
+
+config NESAOS_HOME_PRIORITY
+	int "NesaOS Home task priority"
+	default 100
+
+config NESAOS_HOME_STACKSIZE
+	int "NesaOS Home stack size"
+	default 16384
+
+config NESAOS_HOME_DEVPATH
+	string "Touchscreen device path"
+	default "/dev/input0"
+	depends on INPUT_TOUCHSCREEN
+
+endif
