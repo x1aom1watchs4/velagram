@@ -30,7 +30,7 @@ The tiles currently report their intended app target; they do not launch applica
 A guarded helper script is available at [scripts/integrate_openvela.sh](./scripts/integrate_openvela.sh). From the root of a prepared openvela workspace, run:
 
 ```bash
-/path/to/velagram/NesaOS/system/scripts/integrate_openvela.sh \
+bash /path/to/velagram/NesaOS/system/scripts/integrate_openvela.sh \
   /path/to/velagram/NesaOS/system/apps/nesaos_home
 ```
 
