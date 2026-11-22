@@ -1,0 +1,3 @@
+ifneq ($(CONFIG_NESAOS_HOME),)
+CONFIGURED_APPS += $(APPDIR)/packages/demos/nesaos_home
+endif
