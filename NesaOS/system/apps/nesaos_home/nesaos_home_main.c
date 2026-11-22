@@ -4,9 +4,9 @@
  * Copyright (C) 2026 NesaOS contributors
  * SPDX-License-Identifier: Apache-2.0
  *
- * This is an initial native LVGL shell component for openvela. It is not a
- * complete operating system and does not yet launch applications or expose
- * hardware controls.
+ * Initial native LVGL shell component for openvela. This is not a complete
+ * operating system and does not yet launch applications or expose hardware
+ * controls.
  ****************************************************************************/
 
 #include <nuttx/config.h>
@@ -14,6 +14,10 @@
 #include <sys/boardctl.h>
 
 #include <lvgl/lvgl.h>
+
+#if defined(CONFIG_BOARDCTL) && !defined(CONFIG_NSH_ARCHINIT)
+#  define NESAOS_NEED_BOARDINIT 1
+#endif
 
 #ifdef CONFIG_INPUT_TOUCHSCREEN
 #  define NESAOS_INPUT_PATH CONFIG_NESAOS_HOME_DEVPATH
@@ -104,16 +108,16 @@ int main(int argc, FAR char *argv[])
   lv_nuttx_result_t result;
 
   (void)argc;
-  (void)argv;
-
-#if defined(CONFIG_BOARDCTL) && !defined(CONFIG_NSH_ARCHINIT)
-  boardctl(BOARDIOC_INIT, 0);
-#endif
 
   if (lv_is_initialized())
     {
+      LV_LOG_ERROR("LVGL already initialized! aborting.");
       return -1;
     }
+
+#ifdef NESAOS_NEED_BOARDINIT
+  boardctl(BOARDIOC_INIT, 0);
+#endif
 
   lv_init();
   lv_nuttx_dsc_init(&info);
@@ -127,9 +131,10 @@ int main(int argc, FAR char *argv[])
 #endif
 
   lv_nuttx_init(&info, &result);
+
   if (result.disp == NULL)
     {
-      lv_deinit();
+      LV_LOG_ERROR("NesaOS Home display initialization failed.");
       return 1;
     }
 
@@ -138,7 +143,11 @@ int main(int argc, FAR char *argv[])
   for (;;)
     {
       uint32_t idle = lv_timer_handler();
-      usleep((idle == 0 ? 1 : idle) * 1000);
+
+      /* Minimum sleep of 1ms, matching the upstream LVGL NuttX demo. */
+
+      idle = idle ? idle : 1;
+      usleep(idle * 1000);
     }
 
   return 0;
