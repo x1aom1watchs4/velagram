@@ -15,24 +15,21 @@ NesaOS is intended to be a product distribution built on openvela/NuttX:
 
 **No NesaOS firmware has been built. No Watch S4 board target has been verified.**
 
-The public openvela manifest currently contains a Xiaomi vendor project at `vendor/xiaomi/vela/pyxis`. This confirms that Xiaomi Vela vendor code is part of the public source manifest; it does not identify that project as the M2425W1 board or prove that the public source can boot on a retail Watch S4.
+The public openvela manifest contains a Xiaomi vendor project at `vendor/xiaomi/vela/pyxis`. This confirms that Xiaomi Vela vendor code is part of the public source manifest; it does not identify that project as the M2425W1 board or prove that the public source can boot on a retail Watch S4.
 
 The official Xiaomi Vela documentation says real-device debugging is currently supported only on Xiaomi Watch S4 devices, but requires a special OTA version and is open only to specific partners. That is an app-debugging workflow, not a documented replacement-firmware installation path.
 
-## Reproducible upstream checkout
+## First system milestone: upstream reference build
 
-The upstream source workspace is managed by Google's `repo` manifest tool. From a Linux development machine with the official openvela prerequisites installed:
+The immediate build target is the officially documented openvela ARM64 emulator configuration:
 
-```sh
-mkdir -p ~/work/nesaos-openvela
-cd ~/work/nesaos-openvela
-repo init -u https://github.com/open-vela/manifests -b dev -m openvela.xml
-repo sync -c -j4
-```
+`vendor/openvela/boards/vela/configs/goldfish-arm64-v8a-ap/`
 
-This checks out the upstream openvela source workspace. It does **not** check out a Watch S4 firmware target and does not produce a NesaOS image by itself.
+Use the stable `trunk` manifest baseline for hardware-porting work, then record exact project revisions with `repo manifest -r`. Do not use the moving `dev` branch as the hardware-porting baseline.
 
-Use the official openvela documentation to select a currently supported emulator/development-board target and follow that target's exact build instructions. The first system milestone is a reproducible upstream system build for a supported reference target, not a Quick App package.
+The full host requirements, checkout, build, emulator launch, and acceptance checklist are in [BUILD_BASELINE.md](./BUILD_BASELINE.md).
+
+A successful reference build is a genuine OS build milestone, but it is **not** a Watch S4 firmware image.
 
 ## Porting gates for Xiaomi Watch S4 (M2425W1)
 
