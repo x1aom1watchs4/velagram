@@ -41,7 +41,7 @@ NesaOS is planned as a product layer on top of openvela:
 4. **System apps** — settings, connectivity status, clock/faces, and built-in utilities.
 5. **App compatibility** — adapt upstream examples where APIs and licenses permit.
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the initial technical plan.
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the initial technical plan and [NesaOS/system/README.md](NesaOS/system/README.md) for the native OS porting workstream. The Quick App prototype is separate and is not the operating system.
 
 ## Build status
 
