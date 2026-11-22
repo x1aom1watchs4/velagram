@@ -39,24 +39,23 @@ Install Google's `repo` tool as described in the official openvela Ubuntu quick 
 repo --version
 ```
 
-## Checkout
+## Checkout and build helper
 
-Use the stable manifest branch for the initial reference build:
-
-```sh
-mkdir -p ~/work/nesaos-openvela
-cd ~/work/nesaos-openvela
-repo init -u https://github.com/open-vela/manifests -b trunk -m openvela.xml --git-lfs
-repo sync -c -j8
-```
-
-After syncing, save the exact project revisions used by this checkout:
+A helper script automates the stable manifest checkout, sync, revision lock, ARM64 emulator build, and build-log/artifact capture:
 
 ```sh
-repo manifest -r -o manifest.lock.xml
+bash /path/to/velagram/NesaOS/system/scripts/build_openvela_reference.sh
 ```
 
-Keep `manifest.lock.xml` with the build logs for reproducibility. For a release-quality baseline, select and record a specific official openvela `trunk-*` release tag rather than relying indefinitely on a moving branch; confirm that the same tag is available in the manifests repository before pinning it.
+By default it uses `~/work/nesaos-openvela` and four parallel build jobs. You can choose another workspace and job count:
+
+```sh
+JOBS=4 bash /path/to/velagram/NesaOS/system/scripts/build_openvela_reference.sh ~/work/nesaos-openvela
+```
+
+The script requires the documented host dependencies and the `repo` tool to be installed. It refuses to initialize a non-empty directory that is not already an openvela repo checkout. It records `manifest.lock.xml`, the build log, exit status, and artifact listing under `nesaos-build-logs/`.
+
+For a release-quality baseline, select and record a specific official openvela `trunk-*` release tag rather than relying indefinitely on a moving branch; confirm that the same tag is available in the manifests repository before pinning it. Review the script before running it; it downloads and builds upstream source code.
 
 ## Configure and build the reference target
 
