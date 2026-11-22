@@ -1,0 +1,173 @@
+<template>
+  <div class="screen">
+    <div class="top">
+      <text class="eyebrow">NESALAB</text>
+      <text class="brand">NesaOS</text>
+      <text class="status">WATCH SHELL · PREVIEW</text>
+    </div>
+
+    <div class="hero">
+      <text class="hero-title">{{ panelTitle }}</text>
+      <text class="hero-copy">{{ panelDescription }}</text>
+    </div>
+
+    <text class="section-label">QUICK ACCESS</text>
+    <list class="menu">
+      <list-item for="{{items}}" class="menu-item" type="menu" onclick="openPanel($item.id)">
+        <div class="menu-row">
+          <div class="menu-dot" style="background-color: {{ $item.color }};"></div>
+          <text class="menu-title">{{ $item.title }}</text>
+          <text class="menu-arrow">›</text>
+        </div>
+      </list-item>
+    </list>
+
+    <text class="footer">466 × 466 target · device APIs not connected</text>
+  </div>
+</template>
+
+<script>
+export default {
+  private: {
+    panelTitle: "Your watch, your way",
+    panelDescription: "A clean starting point for the NesaOS watch experience.",
+    items: [
+      { id: "control", title: "Nesa Control", color: "#53D6C7" },
+      { id: "faces", title: "Nesa Faces", color: "#8BCBFA" },
+      { id: "themes", title: "Nesa Themes", color: "#B98A68" },
+      { id: "apps", title: "Apps", color: "#53D6C7" },
+      { id: "settings", title: "Settings", color: "#8BCBFA" }
+    ]
+  },
+
+  openPanel(id) {
+    var titles = {
+      control: "Nesa Control",
+      faces: "Nesa Faces",
+      themes: "Nesa Themes",
+      apps: "Apps",
+      settings: "Settings"
+    }
+    var descriptions = {
+      control: "Device status will appear here after supported watch APIs are verified.",
+      faces: "Watch face selection is planned for a later milestone.",
+      themes: "Color and appearance options are planned for a later milestone.",
+      apps: "The app launcher will be connected after the runtime and package format are confirmed.",
+      settings: "System settings will be added only where the device exposes supported controls."
+    }
+    this.panelTitle = titles[id] || "NesaOS"
+    this.panelDescription = descriptions[id] || "NesaOS preview"
+  }
+}
+</script>
+
+<style>
+.screen {
+  flex-direction: column;
+  flex: 1;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 18px;
+  padding-bottom: 10px;
+  background-color: #071719;
+}
+
+.top {
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow {
+  font-size: 9px;
+  color: #8BCBFA;
+  letter-spacing: 2px;
+}
+
+.brand {
+  margin-top: 2px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #E6FFFC;
+}
+
+.status {
+  margin-top: 3px;
+  font-size: 8px;
+  color: #8AA6A4;
+  letter-spacing: 1px;
+}
+
+.hero {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 14px;
+  background-color: #123033;
+  flex-direction: column;
+}
+
+.hero-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #E6FFFC;
+}
+
+.hero-copy {
+  margin-top: 5px;
+  font-size: 10px;
+  color: #B6D4D1;
+  lines: 3;
+}
+
+.section-label {
+  margin-top: 13px;
+  margin-bottom: 5px;
+  font-size: 8px;
+  color: #8AA6A4;
+  letter-spacing: 1px;
+}
+
+.menu {
+  flex: 1;
+  width: 100%;
+}
+
+.menu-item {
+  height: 34px;
+  margin-top: 3px;
+  border-radius: 10px;
+  background-color: #102528;
+}
+
+.menu-row {
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.menu-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 4px;
+  margin-right: 9px;
+}
+
+.menu-title {
+  flex: 1;
+  font-size: 12px;
+  color: #E6FFFC;
+}
+
+.menu-arrow {
+  font-size: 17px;
+  color: #8BCBFA;
+}
+
+.footer {
+  margin-top: 5px;
+  font-size: 7px;
+  color: #6F9290;
+  text-align: center;
+}
+</style>
