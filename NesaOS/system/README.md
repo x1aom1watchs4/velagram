@@ -34,7 +34,7 @@ bash /path/to/velagram/NesaOS/system/scripts/integrate_openvela.sh \
   /path/to/velagram/NesaOS/system/apps/nesaos_home
 ```
 
-The script checks that it is running at an openvela workspace root, copies the component without overwriting a different existing directory, backs up `packages/demos/Make.defs`, and adds the conditional app registration once. It deliberately does **not** guess which parent Kconfig file includes the demos: inspect the actual checkout and add the component's Kconfig source line beside the other demos before enabling `NESAOS_HOME` in menuconfig.
+The script checks that it is running at an openvela workspace root, copies the component without overwriting a different existing directory, backs up `packages/demos/Make.defs`, and adds the conditional app registration once. The official openvela demo guide documents this parent Make.defs registration and places the demo's Kconfig in its own directory. After integration, search for `NESAOS_HOME` in menuconfig. If it is not listed, inspect how that particular checkout aggregates demo Kconfig files rather than adding a guessed source path.
 
 The helper has not been executed against a real openvela checkout in this environment. Review its output and the generated diff before building.
 
